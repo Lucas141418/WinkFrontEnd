@@ -1,0 +1,104 @@
+{
+  "transactionsJSON": [
+    {
+      "detailsTransaction": "Lunch payment",
+      "timeTransaction": "timeTransaction",
+      "recipientPhone": "+50687654321",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Bob Smith",
+      "amount": 1500,
+      "recipientId": "b0a02aa1-400b-4dd7-bbec-3d053c7bda75",
+      "transactionId": "trans001"
+    },
+    {
+      "detailsTransaction": "Pago de prueba",
+      "timeTransaction": "11/6/2024, 12:41:05 AM",
+      "recipientPhone": "85210734",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "David Lucas",
+      "amount": 150.75,
+      "recipientId": "recipient456",
+      "transactionId": "ee39692c-762c-47fe-9900-4923cdfd289a"
+    },
+    {
+      "detailsTransaction": "Pago de prueba dos",
+      "timeTransaction": "11/6/2024, 12:53:00 AM",
+      "recipientPhone": "85210734",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "David Lucas",
+      "amount": 1000,
+      "recipientId": "recipient456",
+      "transactionId": "d3722464-be45-4f13-84bc-43f12c7fc2c7"
+    },
+    {
+      "detailsTransaction": "Pago de servicios",
+      "timeTransaction": "11/5/2024, 6:45:28 PM",
+      "recipientPhone": "+1234567890",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "John Doe",
+      "amount": 150.75,
+      "recipientId": "recipient456",
+      "transactionId": "8c144618-68bd-4c21-8606-37af86a045ac"
+    },
+    {
+      "detailsTransaction": "Pago de prueba dos",
+      "timeTransaction": "11/6/2024, 12:53:17 AM",
+      "recipientPhone": "85210734",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "David Lucas",
+      "amount": 40,
+      "recipientId": "recipient456",
+      "transactionId": "878cf1c3-f26e-4953-aecb-2fee880bb51f"
+    },
+    {
+      "detailsTransaction": "Pago de prueba dos",
+      "timeTransaction": "11/6/2024, 12:52:54 AM",
+      "recipientPhone": "85210734",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "David Lucas",
+      "amount": 1000,
+      "recipientId": "recipient456",
+      "transactionId": "5d853301-9a11-43f0-8fca-e59b90e6edc8"
+    },
+    {
+      "detailsTransaction": "Pago de servicios",
+      "timeTransaction": "11/5/2024, 7:40:54 PM",
+      "recipientPhone": "+1234567890",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "John Doe",
+      "amount": 150.75,
+      "recipientId": "recipient456",
+      "transactionId": "36c782b9-3209-42d1-9c48-0f9742b30dd2"
+    },
+    {
+      "detailsTransaction": "Pago de prueba",
+      "timeTransaction": "11/6/2024, 12:50:48 AM",
+      "recipientPhone": "85210734",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "David Lucas",
+      "amount": 150.75,
+      "recipientId": "recipient456",
+      "transactionId": "23091fce-e631-47de-b397-e8297f35b9c0"
+    },
+    {
+      "detailsTransaction": "Pago de prueba",
+      "timeTransaction": "11/6/2024, 12:50:48 AM",
+      "recipientPhone": "85210734",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "David Lucas",
+      "amount": 150.75,
+      "recipientId": "recipient456",
+      "transactionId": "23091fce-e8297f35b9c0"
+    },
+    {
+      "detailsTransaction": "Pago de prueba",
+      "timeTransaction": "11/6/2024, 12:50:48 AM",
+      "recipientPhone": "85210734",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "David Lucas",
+      "amount": 150.75,
+      "recipientId": "recipient456",
+      "transactionId": "e631-47de-"
+    }
+  ]
+}

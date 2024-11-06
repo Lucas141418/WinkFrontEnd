@@ -1,11 +1,19 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, PixelRatio, Platform, StyleSheet } from "react-native";
 
 const { width: widthScreen, height: heightScreen } = Dimensions.get("window");
 
-const scale = widthScreen / 375;
+const HorizontalVariable = widthScreen / 375;
+const verticalVariable = heightScreen / 812;
+
+const scaleHorizontal = (size: number) => size * HorizontalVariable;
+const scaleVertical = (size: number) => size * verticalVariable;
 
 const getFontSize = (size: number): number => {
-  return size / scale;
+  const fontSize = size * HorizontalVariable;
+  return (
+    Math.round(PixelRatio.roundToNearestPixel(fontSize)) -
+    (Platform.OS === "ios" ? 0 : 1)
+  );
 };
 
 const COLORS = {
@@ -13,6 +21,7 @@ const COLORS = {
   white: "#fff",
   primaryColor: "#4c51f7",
 };
+
 const FONT_SIZE = {
   h1: getFontSize(28),
   subText: getFontSize(18.5),
@@ -22,14 +31,13 @@ const FONT_SIZE = {
 const AppStyles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.white,
-    display: "flex",
-    flex: 1,
-    borderWidth: 15, //Quitar0
     borderColor: COLORS.primaryColor,
+    borderWidth: 8,
+    flex: 1,
   },
   containerBalance: {
     borderColor: COLORS.primaryColor,
-    borderWidth: 2, //Quitar
+    borderWidth: 2,
     gap: 12,
     marginTop: 15,
   },
@@ -45,14 +53,23 @@ const AppStyles = StyleSheet.create({
   },
   logo: {
     alignSelf: "center",
-    aspectRatio: 4.1,
     borderColor: COLORS.primaryColor,
-    borderWidth: 2, //Quitar
-    height: undefined,
-    width: widthScreen * 0.37,
+    borderWidth: 1,
+    height: "5%",
+    // height: undefined,
+    marginTop: 15,
+    // width: scaleHorizontal(180),
+    resizeMode: "contain",
+    width: "30%",
   },
   sinpeButton: {
-    backgroundColor: "black",
+    alignItems: "center",
+    alignSelf: "center",
+    backgroundColor: COLORS.primaryColor,
+    borderRadius: 100,
+    height: scaleVertical(68),
+    justifyContent: "center",
+    width: scaleHorizontal(65),
   },
   subText: {
     fontSize: FONT_SIZE.subText,

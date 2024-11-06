@@ -1,0 +1,16 @@
+{
+  "Users": [
+    {
+      "userName": "lucas141418",
+      "balance": 309.25,
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "userPhone": "+50687654321"
+    },
+    {
+      "userName": "david19651",
+      "balance": 5000,
+      "userId": "b0a02aa1-400b-4dd7-bbec-3d053c7bda75",
+      "userPhone": "50612345678"
+    }
+  ]
+}
