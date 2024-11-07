@@ -1,15 +1,17 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable linebreak-style */
+type userIdType = {
+    userId: string;
+}
 
-
-export interface userInfo {
+export interface userInfoInterface {
     userName:  string;
     balance:   number;
     userId:    string;
     userPhone: string;
 }
 
-export interface Transaction {
+export interface TransactionInterface {
     detailsTransaction: string;
     timeTransaction:    string;
     recipientPhone:     string;
@@ -18,4 +20,18 @@ export interface Transaction {
     amount:             number
     recipientId:        string;
     transactionId:      string;
+}
+
+export interface TransactionCreationInterface {
+    detailsTransaction: string;
+    recipientPhone:     string;
+    userId:             string;
+    recipientName:      string;
+    amount:             number;
+    recipientId:        string;
+}
+
+export interface TransactionFetchInterface {
+    userId: string;
+    transactionId: string;
 }
