@@ -22,6 +22,6 @@ module.exports = {
   rules: {
     "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": "off",
   },
 };

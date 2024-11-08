@@ -1,23 +1,26 @@
+/* eslint-disable react-native/no-color-literals */
 import { StatusBar } from "expo-status-bar";
-import { Text, View, Image, TouchableHighlight } from "react-native";
-import AppStyles from "./styles/AppStyles";
-import icon from "./assets/WINK.png";
+import { StyleSheet, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import Main from "./Components/Main";
 
 export default function App() {
   return (
-    <View style={AppStyles.container}>
-      <Image source={icon} style={AppStyles.logo} />
-      <View style={AppStyles.containerBalance}>
-        <Text style={AppStyles.h1}>Cuenta Colones</Text>
-        <Text style={AppStyles.subText}>Saldo disponible</Text>
-        <Text style={AppStyles.currentBalance}>₡6,850.00</Text>
-        <Text style={AppStyles.subText}> ¿Qué querés hacer?</Text>
-        <TouchableHighlight style={AppStyles.sinpeButton}>
-          <Text>Sinpe</Text>
-        </TouchableHighlight>
+    <SafeAreaProvider>
+      <View style={styles.container}>
+        <StatusBar style="light" />
+        <Main />
       </View>
-
-      <StatusBar style="auto" />
-    </View>
+    </SafeAreaProvider>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    backgroundColor: "#000",
+    flex: 1,
+    justifyContent: "center",
+    borderColor: "#0f0f0f",
+    borderWidth: 8,
+  },
+});

@@ -1,0 +1,284 @@
+{
+  "transactionsJSON": [
+    {
+      "detailsTransaction": "Lunch payment",
+      "timeTransaction": "11/6/2024, 12:05:15 PM",
+      "recipientPhone": "+50687654321",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Alice Johnson",
+      "amount": 1500,
+      "recipientId": "b0a02aa1-400b-4dd7-bbec-3d053c7bda75",
+      "transactionId": "trans002"
+    },
+    {
+      "detailsTransaction": "Dinner with friends",
+      "timeTransaction": "11/5/2024, 8:20:10 PM",
+      "recipientPhone": "+50687451234",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Maria Lopez",
+      "amount": 2500,
+      "recipientId": "8f6d1234-7b12-4d12-9002-63a8cde6b1f8",
+      "transactionId": "trans003"
+    },
+    {
+      "detailsTransaction": "Movie tickets",
+      "timeTransaction": "11/5/2024, 6:15:32 PM",
+      "recipientPhone": "+50688776655",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Chris Brown",
+      "amount": 1800,
+      "recipientId": "6eab7890-2c3d-45e5-b567-12bf1d9e08c1",
+      "transactionId": "trans004"
+    },
+    {
+      "detailsTransaction": "Rent payment",
+      "timeTransaction": "11/4/2024, 9:00:00 AM",
+      "recipientPhone": "+50685943210",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Liam Martinez",
+      "amount": 50000,
+      "recipientId": "b4c4567d-3ef0-4c98-a9a5-3bdc8e8cfe6a",
+      "transactionId": "trans005"
+    },
+    {
+      "detailsTransaction": "Groceries",
+      "timeTransaction": "11/3/2024, 5:25:45 PM",
+      "recipientPhone": "+50683445566",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Sophia Rivera",
+      "amount": 12500,
+      "recipientId": "c3f123ab-9d5f-42b7-8a14-19e5f867c912",
+      "transactionId": "trans006"
+    },
+    {
+      "detailsTransaction": "Gym membership",
+      "timeTransaction": "11/3/2024, 7:15:30 AM",
+      "recipientPhone": "+50681234567",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Emily Adams",
+      "amount": 3000,
+      "recipientId": "9f012345-d678-45bc-a789-ef567a1234bc",
+      "transactionId": "trans007"
+    },
+    {
+      "detailsTransaction": "Electric bill",
+      "timeTransaction": "11/2/2024, 11:00:00 AM",
+      "recipientPhone": "+50680007654",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Jake White",
+      "amount": 4500,
+      "recipientId": "1b234567-8f90-4f5e-a0de-9c1234ef5678",
+      "transactionId": "trans008"
+    },
+    {
+      "detailsTransaction": "Gift for family",
+      "timeTransaction": "11/1/2024, 3:45:20 PM",
+      "recipientPhone": "+50681123456",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Isabella Stone",
+      "amount": 7000,
+      "recipientId": "f7e123ab-7890-4567-a1b2-345cde6f789a",
+      "transactionId": "trans009"
+    },
+    {
+      "detailsTransaction": "Pet supplies",
+      "timeTransaction": "11/1/2024, 10:15:05 AM",
+      "recipientPhone": "+50685556789",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Mia Torres",
+      "amount": 2800,
+      "recipientId": "7e1234a5-89bc-4d5f-1234-abcd567890ef",
+      "transactionId": "trans010"
+    },
+    {
+      "detailsTransaction": "Medical appointment",
+      "timeTransaction": "10/30/2024, 4:10:25 PM",
+      "recipientPhone": "+50687754321",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Oliver Scott",
+      "amount": 6500,
+      "recipientId": "c8d56789-9abc-4de1-a5c3-1234567890ab",
+      "transactionId": "trans011"
+    },
+    {
+      "detailsTransaction": "Car wash",
+      "timeTransaction": "10/29/2024, 2:25:14 PM",
+      "recipientPhone": "+50687654329",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Lucas Brown",
+      "amount": 1200,
+      "recipientId": "8b123456-4f5e-7890-a1b2-1234cde67890",
+      "transactionId": "trans012"
+    },
+    {
+      "detailsTransaction": "Book purchase",
+      "timeTransaction": "10/29/2024, 9:50:00 AM",
+      "recipientPhone": "+50680012345",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Nora Peterson",
+      "amount": 950,
+      "recipientId": "3f456789-a123-4b5c-d678-90123ef45678",
+      "transactionId": "trans013"
+    },
+    {
+      "detailsTransaction": "Online subscription",
+      "timeTransaction": "10/28/2024, 11:30:45 AM",
+      "recipientPhone": "+50681112233",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Zoe Harrison",
+      "amount": 1500,
+      "recipientId": "f3a45678-1b2c-4d5f-7890-123456789abc",
+      "transactionId": "trans014"
+    },
+    {
+      "detailsTransaction": "Cafe meeting",
+      "timeTransaction": "10/27/2024, 4:05:20 PM",
+      "recipientPhone": "+50685678912",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Lilly Greene",
+      "amount": 900,
+      "recipientId": "8b345678-9abc-4e5d-9012-34567890abcd",
+      "transactionId": "trans015"
+    },
+    {
+      "detailsTransaction": "Lunch payment",
+      "timeTransaction": "11/6/2024, 12:05:15 PM",
+      "recipientPhone": "+50687654321",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Alice Johnson",
+      "amount": 1500,
+      "recipientId": "b0a02aa1-400b-4dd7-bbec-3d053c7bda75",
+      "transactionId": "trans002"
+    },
+    {
+      "detailsTransaction": "Dinner with friends",
+      "timeTransaction": "11/5/2024, 8:20:10 PM",
+      "recipientPhone": "+50687451234",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Maria Lopez",
+      "amount": 2500,
+      "recipientId": "8f6d1234-7b12-4d12-9002-63a8cde6b1f8",
+      "transactionId": "trans003"
+    },
+    {
+      "detailsTransaction": "Movie tickets",
+      "timeTransaction": "11/5/2024, 6:15:32 PM",
+      "recipientPhone": "+50688776655",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Chris Brown",
+      "amount": 1800,
+      "recipientId": "6eab7890-2c3d-45e5-b567-12bf1d9e08c1",
+      "transactionId": "trans004"
+    },
+    {
+      "detailsTransaction": "Rent payment",
+      "timeTransaction": "11/4/2024, 9:00:00 AM",
+      "recipientPhone": "+50685943210",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Liam Martinez",
+      "amount": 50000,
+      "recipientId": "b4c4567d-3ef0-4c98-a9a5-3bdc8e8cfe6a",
+      "transactionId": "trans005"
+    },
+    {
+      "detailsTransaction": "Groceries",
+      "timeTransaction": "11/3/2024, 5:25:45 PM",
+      "recipientPhone": "+50683445566",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Sophia Rivera",
+      "amount": 12500,
+      "recipientId": "c3f123ab-9d5f-42b7-8a14-19e5f867c912",
+      "transactionId": "trans006"
+    },
+    {
+      "detailsTransaction": "Gym membership",
+      "timeTransaction": "11/3/2024, 7:15:30 AM",
+      "recipientPhone": "+50681234567",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Emily Adams",
+      "amount": 3000,
+      "recipientId": "9f012345-d678-45bc-a789-ef567a1234bc",
+      "transactionId": "trans007"
+    },
+    {
+      "detailsTransaction": "Electric bill",
+      "timeTransaction": "11/2/2024, 11:00:00 AM",
+      "recipientPhone": "+50680007654",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Jake White",
+      "amount": 4500,
+      "recipientId": "1b234567-8f90-4f5e-a0de-9c1234ef5678",
+      "transactionId": "trans008"
+    },
+    {
+      "detailsTransaction": "Gift for family",
+      "timeTransaction": "11/1/2024, 3:45:20 PM",
+      "recipientPhone": "+50681123456",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Isabella Stone",
+      "amount": 7000,
+      "recipientId": "f7e123ab-7890-4567-a1b2-345cde6f789a",
+      "transactionId": "trans009"
+    },
+    {
+      "detailsTransaction": "Pet supplies",
+      "timeTransaction": "11/1/2024, 10:15:05 AM",
+      "recipientPhone": "+50685556789",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Mia Torres",
+      "amount": 2800,
+      "recipientId": "7e1234a5-89bc-4d5f-1234-abcd567890ef",
+      "transactionId": "trans010"
+    },
+    {
+      "detailsTransaction": "Medical appointment",
+      "timeTransaction": "10/30/2024, 4:10:25 PM",
+      "recipientPhone": "+50687754321",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Oliver Scott",
+      "amount": 6500,
+      "recipientId": "c8d56789-9abc-4de1-a5c3-1234567890ab",
+      "transactionId": "trans011"
+    },
+    {
+      "detailsTransaction": "Car wash",
+      "timeTransaction": "10/29/2024, 2:25:14 PM",
+      "recipientPhone": "+50687654329",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Lucas Brown",
+      "amount": 1200,
+      "recipientId": "8b123456-4f5e-7890-a1b2-1234cde67890",
+      "transactionId": "trans012"
+    },
+    {
+      "detailsTransaction": "Book purchase",
+      "timeTransaction": "10/29/2024, 9:50:00 AM",
+      "recipientPhone": "+50680012345",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Nora Peterson",
+      "amount": 950,
+      "recipientId": "3f456789-a123-4b5c-d678-90123ef45678",
+      "transactionId": "trans013"
+    },
+    {
+      "detailsTransaction": "Online subscription",
+      "timeTransaction": "10/28/2024, 11:30:45 AM",
+      "recipientPhone": "+50681112233",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Zoe Harrison",
+      "amount": 1500,
+      "recipientId": "f3a45678-1b2c-4d5f-7890-123456789abc",
+      "transactionId": "trans014"
+    },
+    {
+      "detailsTransaction": "Cafe meeting",
+      "timeTransaction": "10/27/2024, 4:05:20 PM",
+      "recipientPhone": "+50685678912",
+      "userId": "c717270e-6239-4331-9e8d-f64246ee470b",
+      "recipientName": "Lilly Greene",
+      "amount": 900,
+      "recipientId": "8b345678-9abc-4e5d-9012-34567890abcd",
+      "transactionId": "trans015"
+    }
+  ]
+}
