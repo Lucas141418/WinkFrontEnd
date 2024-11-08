@@ -49,7 +49,7 @@ export default function BalanceSection({ userInfo }: balanceProp) {
         <Text style={AppStyles.subText}> ¿Qué querés hacer?</Text>
 
         <View style={AppStyles.viewButton}>
-          <Link asChild href="/SendSinpe">
+          <Link asChild href="/SinpeScreen">
             <Pressable style={AppStyles.sinpeButton}>
               <Feather name="refresh-ccw" size={35} color="blue" />
             </Pressable>

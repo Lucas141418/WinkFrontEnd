@@ -24,11 +24,16 @@ const COLORS = {
   white: "#fff",
   primaryColor: "#4c51f7",
   red: "#d32f2f",
+  yellow: "#cec00e",
+  green: "#3be477",
+  light_purple: "#D6D6FF",
+  purple: "#4A4AFF",
 };
 
 const FONT_SIZE = {
   h1: getFontSize(28),
   h2: getFontSize(24),
+  h3: getFontSize(18),
   text: getFontSize(16),
   subText: getFontSize(18.5),
   timeText: getFontSize(14),
@@ -38,11 +43,26 @@ const FONT_SIZE = {
 const AppStyles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.white,
-    borderColor: COLORS.primaryColor,
+    borderColor: COLORS.red,
     borderWidth: 8,
     flex: 1,
   },
+  borderTest: {
+    borderColor: COLORS.green,
+    borderWidth: 2,
+    flex: 1,
+  },
+  borderTest2: {
+    borderColor: COLORS.yellow,
+    borderWidth: 2,
+  },
   containerBalance: {
+    borderColor: COLORS.primaryColor,
+    borderWidth: 2,
+    gap: 12,
+    paddingBottom: 10,
+  },
+  containerSinpe: {
     borderColor: COLORS.primaryColor,
     borderWidth: 2,
     gap: 12,
@@ -60,6 +80,16 @@ const AppStyles = StyleSheet.create({
   },
   h2: {
     fontSize: FONT_SIZE.h2,
+    fontWeight: "bold",
+  },
+  h3: {
+    color: COLORS.primaryColor,
+    fontSize: FONT_SIZE.h3,
+    fontWeight: "bold",
+  },
+  hScreen: {
+    color: COLORS.white,
+    fontSize: FONT_SIZE.h1,
     fontWeight: "bold",
   },
   logo: {
@@ -87,6 +117,9 @@ const AppStyles = StyleSheet.create({
     },
     shadowRadius: 5.84,
     width: scaleHorizontal(65),
+  },
+  text: {
+    fontSize: FONT_SIZE.text,
   },
   subText: {
     fontSize: FONT_SIZE.subText,
@@ -121,6 +154,25 @@ const AppStyles = StyleSheet.create({
   },
   viewButton: {
     alignItems: "center",
+  },
+  contactPreviewC: {
+    //Posiblemente quitar o cambiar nombre
+    alignItems: "center", // Centra el contenido horizontalmente
+    backgroundColor: COLORS.light_purple, // Color de fondo
+    borderRadius: 50, // Hace que el `View` sea un círculo
+    height: 70,
+    justifyContent: "center", // Centra el contenido verticalmente
+    width: 70, // Puedes ajustar el tamaño según lo necesites
+  },
+  contactPreviewT: {
+    color: COLORS.primaryColor, // Color del texto
+    fontSize: 24, // Tamaño de la fuente
+    fontWeight: "bold",
+  },
+  errorText: {
+    color: COLORS.red,
+    fontSize: FONT_SIZE.text,
+    fontWeight: "bold",
   },
 });
 

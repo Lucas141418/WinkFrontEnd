@@ -2,11 +2,14 @@ import { View, StyleSheet, Text, Pressable } from "react-native";
 import { formaterCurrency } from "../src/Utils";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Link, useLocalSearchParams } from "expo-router";
+import ScreenCom from "../src/Components/Screen";
+import AppStyles from "../src/styles/AppStyles";
 
 export default function TransactionDetails() {
   const { transactionId } = useLocalSearchParams();
+
   return (
-    <View>
+    <ScreenCom>
       <View style={TransactionDetailsStyles.section}>
         <View style={TransactionDetailsStyles.header}>
           <Link asChild href="/">
@@ -16,12 +19,11 @@ export default function TransactionDetails() {
           </Link>
           <Text style={TransactionDetailsStyles.container}>
             Detalles de movimiento
-            {transactionId}
           </Text>
         </View>
 
-        <View style={TransactionDetailsStyles.circle}>
-          <Text style={TransactionDetailsStyles.text}>CN</Text>
+        <View style={AppStyles.contactPreviewC}>
+          <Text style={AppStyles.contactPreviewT}>CN</Text>
         </View>
 
         <Text>SINPE móvil - Carlos Narango </Text>
@@ -54,7 +56,7 @@ export default function TransactionDetails() {
           <Text style={TransactionDetailsStyles.button}>Volver</Text>
         </Pressable>
       </Link>
-    </View>
+    </ScreenCom>
   );
 }
 
@@ -94,20 +96,6 @@ const TransactionDetailsStyles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
-  },
-  circle: {
-    //Posiblemente quitar o cambiar nombre
-    width: 100, // Puedes ajustar el tamaño según lo necesites
-    height: 100,
-    borderRadius: 50, // Hace que el `View` sea un círculo
-    backgroundColor: "#D6D6FF", // Color de fondo
-    justifyContent: "center", // Centra el contenido verticalmente
-    alignItems: "center", // Centra el contenido horizontalmente
-  },
-  text: {
-    color: "#4A4AFF", // Color del texto
-    fontSize: 24, // Tamaño de la fuente
     fontWeight: "bold",
   },
 });
