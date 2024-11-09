@@ -1,6 +1,4 @@
 import { Dimensions, PixelRatio, Platform, StyleSheet } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-
 const { width: widthScreen, height: heightScreen } = Dimensions.get("window");
 
 const HorizontalVariable = widthScreen / 375;
@@ -41,20 +39,32 @@ const FONT_SIZE = {
 };
 
 const AppStyles = StyleSheet.create({
-  container: {
-    backgroundColor: COLORS.white,
-    borderColor: COLORS.red,
-    borderWidth: 8,
-    flex: 1,
-  },
   borderTest: {
     borderColor: COLORS.green,
     borderWidth: 2,
     flex: 1,
   },
-  borderTest2: {
-    borderColor: COLORS.yellow,
-    borderWidth: 2,
+  contactDetails: {
+    flex: 1,
+  },
+  contactInitials: {
+    color: COLORS.primaryColor,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  contactName: {
+    fontSize: FONT_SIZE.subText,
+  },
+
+  contactPhone: {
+    color: COLORS.gray_white,
+    fontSize: FONT_SIZE.timeText,
+  },
+  container: {
+    backgroundColor: COLORS.white,
+    borderColor: COLORS.red,
+    borderWidth: 8,
+    flex: 1,
   },
   containerBalance: {
     borderColor: COLORS.primaryColor,
@@ -68,9 +78,24 @@ const AppStyles = StyleSheet.create({
     gap: 12,
     paddingBottom: 10,
   },
+  TransactionContainer: {
+    borderColor: COLORS.yellow,
+    borderWidth: 15,
+    flex: 1,
+    gap: 12,
+    padding: 14,
+  },
   currentBalance: {
     color: COLORS.gray,
     fontSize: FONT_SIZE.bigCurrency,
+    fontWeight: "bold",
+  },
+  currentBalanceContainer: {
+    alignItems: "center",
+  },
+  errorText: {
+    color: COLORS.red,
+    fontSize: FONT_SIZE.text,
     fontWeight: "bold",
   },
   h1: {
@@ -87,11 +112,7 @@ const AppStyles = StyleSheet.create({
     fontSize: FONT_SIZE.h3,
     fontWeight: "bold",
   },
-  hScreen: {
-    color: COLORS.white,
-    fontSize: FONT_SIZE.h1,
-    fontWeight: "bold",
-  },
+
   logo: {
     alignSelf: "center",
     borderColor: COLORS.primaryColor,
@@ -100,6 +121,50 @@ const AppStyles = StyleSheet.create({
     marginTop: 15,
     resizeMode: "contain",
     width: "34%",
+  },
+  separatorContacts: {
+    backgroundColor: COLORS.gray_white,
+    height: 1,
+    marginVertical: 5,
+  },
+  text: {
+    color: COLORS.gray,
+    fontSize: FONT_SIZE.text,
+  },
+  TransactionSubText: {
+    color: COLORS.gray_white,
+    fontSize: FONT_SIZE.timeText,
+    marginBottom: 5,
+  },
+  subText: {
+    fontSize: FONT_SIZE.subText,
+  },
+  TransactionSectionText: {
+    fontSize: FONT_SIZE.text,
+    marginBottom: 15,
+  },
+  TransactioncontactBackground: {
+    alignItems: "center",
+    alignSelf: "center",
+    backgroundColor: COLORS.light_purple,
+    borderRadius: 150,
+    height: 60,
+    justifyContent: "center",
+    width: 60,
+  },
+  TransactionInitialPreview: {
+    color: COLORS.purple,
+    fontSize: FONT_SIZE.h2,
+  },
+  TransactionText: {
+    color: COLORS.gray,
+    fontSize: FONT_SIZE.text,
+    textAlign: "center",
+  },
+  transactionAmountDetailed: {
+    fontSize: FONT_SIZE.h2,
+    fontWeight: "bold",
+    textAlign: "center",
   },
   // eslint-disable-next-line react-native/no-color-literals
   sinpeButton: {
@@ -118,16 +183,25 @@ const AppStyles = StyleSheet.create({
     shadowRadius: 5.84,
     width: scaleHorizontal(65),
   },
-  text: {
-    fontSize: FONT_SIZE.text,
-  },
-  subText: {
-    fontSize: FONT_SIZE.subText,
-  },
   transactionAmount: {
     color: COLORS.red,
     fontSize: FONT_SIZE.subText,
     fontWeight: "bold",
+  },
+  contactItem: {
+    alignItems: "center",
+    flexDirection: "row",
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+  },
+  contactInitialsContainer: {
+    alignItems: "center",
+    backgroundColor: COLORS.light_purple,
+    borderRadius: 120,
+    height: 45,
+    justifyContent: "center",
+    marginRight: 10,
+    width: 45,
   },
   // eslint-disable-next-line react-native/no-color-literals
   transactionCard: {
@@ -155,22 +229,47 @@ const AppStyles = StyleSheet.create({
   viewButton: {
     alignItems: "center",
   },
-  contactPreviewC: {
-    //Posiblemente quitar o cambiar nombre
-    alignItems: "center", // Centra el contenido horizontalmente
-    backgroundColor: COLORS.light_purple, // Color de fondo
-    borderRadius: 50, // Hace que el `View` sea un círculo
-    height: 70,
-    justifyContent: "center", // Centra el contenido verticalmente
-    width: 70, // Puedes ajustar el tamaño según lo necesites
+  searchInput: {
+    borderColor: COLORS.gray_white,
+    borderRadius: 25,
+    borderWidth: 1,
+    fontSize: FONT_SIZE.text,
+    marginBottom: 16,
+    padding: 10,
   },
-  contactPreviewT: {
-    color: COLORS.primaryColor, // Color del texto
-    fontSize: 24, // Tamaño de la fuente
+  //Cambiar o mejora
+  header: {
+    alignItems: "center",
+    backgroundColor: COLORS.white,
+    flexDirection: "row",
+    gap: 20,
+    padding: 16,
+  },
+  headerText: {
+    alignItems: "center",
+    alignSelf: "center",
+    color: COLORS.primaryColor,
+    fontSize: FONT_SIZE.h2,
     fontWeight: "bold",
   },
-  errorText: {
-    color: COLORS.red,
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 8,
+  },
+  sectionContent: {
+    fontSize: 16,
+  },
+  Transactionbutton: {
+    alignItems: "center",
+    backgroundColor: COLORS.primaryColor,
+    borderRadius: 100,
+    justifyContent: "center",
+    marginTop: 20,
+    padding: 15,
+  },
+  buttonText: {
+    color: COLORS.white,
     fontSize: FONT_SIZE.text,
     fontWeight: "bold",
   },

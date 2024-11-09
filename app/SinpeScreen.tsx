@@ -1,7 +1,7 @@
 import { Stack } from "expo-router";
 import ScreenCom from "../src/Components/Screen";
-import AppStyles from "../src/styles/AppStyles";
 import SendSinpe from "../src/Components/SendSinpe";
+import AppStyles from "../src/styles/AppStyles";
 
 export default function SinpeScreen() {
   return (
@@ -14,7 +14,6 @@ export default function SinpeScreen() {
           headerTintColor: "#fff",
           title: "Enviar Sinpe",
           headerTitleAlign: "center",
-          headerTitleStyle: AppStyles.hScreen,
         }}
       />
       <SendSinpe />

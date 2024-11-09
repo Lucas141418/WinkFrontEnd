@@ -1,14 +1,14 @@
 import { API_URLS_WINK } from "../constants";
 import {
   TransactionCreationInterface,
-  TransactionInterface,
+  TransactionFetchInterface,
   userIdType,
 } from "../types";
 
 export function fetchTransactionById({
   userId,
   transactionId,
-}: TransactionInterface) {
+}: TransactionFetchInterface) {
   return fetch(API_URLS_WINK.GET_TRANSACTION_BY_ID({ userId, transactionId }))
     .then((res) => {
       if (!res.ok) {
@@ -43,28 +43,31 @@ export function fetchUserTransactions({ userId }: userIdType) {
 
       return res.json();
     })
-    .then((data) => data.transactions)
+    .then((data) => {
+      return data.transactions;
+    })
     .catch((err) => console.log(err));
 }
 export function createTransaction({
-  transaction,
+  newtransaction,
 }: {
-  transaction: TransactionCreationInterface;
+  newtransaction: TransactionCreationInterface;
 }) {
   return fetch(API_URLS_WINK.CREATE_TRANSACTION, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(transaction),
+    body: JSON.stringify(newtransaction),
   })
     .then((res) => {
       if (!res.ok) {
         throw new Error(res.statusText);
       }
-
       return res.json();
     })
-    .then((data) => data)
+    .then((data) => {
+      return data;
+    })
     .catch((err) => console.log(err));
 }

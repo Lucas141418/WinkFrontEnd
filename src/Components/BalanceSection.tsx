@@ -1,40 +1,31 @@
-import { Feather } from "@expo/vector-icons";
-import { Link } from "expo-router";
-import {
-  View,
-  Pressable,
-  Text,
-  ActivityIndicator,
-  FlatList,
-} from "react-native";
+import { View, Text, FlatList } from "react-native";
 import AppStyles from "../styles/AppStyles";
 import { formaterCurrency } from "../Utils";
 import { TransactionsCardsAnimated } from "./TransactionsCard";
-import { TransactionInterface, userInfoInterface } from "../types";
-import { transactionsJSON } from "../Mocks/transactions.json";
-
-import { useEffect, useState } from "react";
+import ButtonSinpe from "./ButtonSinpe";
+import { UsersIds } from "../constants";
 import useFetchTransactionsHistory from "../Hooks/useFetchTransactionsHistory";
+import { useEffect } from "react";
+import useFetchUserInfo from "../Hooks/useFetchUserInfo";
 
-interface balanceProp {
-  userInfo?: userInfoInterface;
-}
+export default function BalanceSection() {
+  const { userId1: userId } = UsersIds; //This line is for simulation  if there were a handleing of diferents users
 
-export default function BalanceSection({ userInfo }: balanceProp) {
-  // const userId = userInfo?.userId;
-  const [transactionsHistory, setTransactionHistory] = useState<
-    TransactionInterface[]
-  >([]);
+  const { getUserInfo, setUserInfo, userInfo } = useFetchUserInfo();
+  useEffect(() => {
+    getUserInfo({ userId }).then(setUserInfo);
+  }, []);
 
-  // const { transactionsHistory, getTransactionHistory } =
-  //   useFetchTransactionsHistory();
+  // const [transactionsHistory, setTransactionHistory] = useState<
+  //   TransactionInterface[]
+  // >([]);
+
+  const { transactionsHistory, getTransactionHistory } =
+    useFetchTransactionsHistory();
 
   useEffect(() => {
-    // getTransactionHistory({ userId });
-    setTransactionHistory(transactionsJSON);
-  }, []); //Quitar despues
-
-  // }, [getTransactionHistory, userId]);
+    getTransactionHistory({ userId });
+  }, [getTransactionHistory, userId]);
 
   if (!userInfo) return <Text> No hay datos de usuario</Text>;
 
@@ -48,28 +39,18 @@ export default function BalanceSection({ userInfo }: balanceProp) {
         </Text>
         <Text style={AppStyles.subText}> ¿Qué querés hacer?</Text>
 
-        <View style={AppStyles.viewButton}>
-          <Link asChild href="/SinpeScreen">
-            <Pressable style={AppStyles.sinpeButton}>
-              <Feather name="refresh-ccw" size={35} color="blue" />
-            </Pressable>
-          </Link>
-          <Text>SINPE móvil</Text>
-        </View>
+        <ButtonSinpe />
       </View>
 
       <Text style={AppStyles.h2}>Movimientos</Text>
-      {transactionsHistory.length === 0 ? (
-        <ActivityIndicator />
-      ) : (
-        <FlatList
-          data={transactionsHistory}
-          keyExtractor={(item) => item.transactionId}
-          renderItem={({ item, index }) => (
-            <TransactionsCardsAnimated transaction={item} index={index} />
-          )}
-        ></FlatList>
-      )}
+
+      <FlatList
+        data={transactionsHistory}
+        keyExtractor={(item) => item.transactionId}
+        renderItem={({ item, index }) => (
+          <TransactionsCardsAnimated transaction={item} index={index} />
+        )}
+      ></FlatList>
     </View>
   );
 }

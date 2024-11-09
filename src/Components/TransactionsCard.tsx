@@ -6,11 +6,7 @@ import { useEffect, useRef } from "react";
 import AppStyles from "../styles/AppStyles";
 
 // eslint-disable-next-line prettier/prettier
-export function TransactionsCards({
-  transaction,
-}: {
-  transaction: TransactionInterface;
-}) {
+export function TransactionsCards({  transaction,}: {  transaction: TransactionInterface;}) {
   return (
     <Link
       asChild
@@ -23,9 +19,13 @@ export function TransactionsCards({
           <Text style={AppStyles.transactionTitle}>
             Sinpe móvil - {transaction.recipientName}
           </Text>
-          <Text style={AppStyles.transactionTime}>{transaction.timeTransaction}</Text>
+          <Text style={AppStyles.transactionTime}>
+            {transaction.timeTransaction}
+          </Text>
         </View>
-        <Text style={AppStyles.transactionAmount}>- {formaterCurrency(transaction.amount)}</Text>
+        <Text style={AppStyles.transactionAmount}>
+          - {formaterCurrency(transaction.amount)}
+        </Text>
       </Pressable>
     </Link>
   );
