@@ -2,7 +2,6 @@ import { Text, View } from "react-native";
 import AppStyles from "../styles/AppStyles";
 import FormSinpe from "./FormSinpe";
 import { useLocalSearchParams } from "expo-router";
-import { Contact } from "./Conctacts";
 
 export default function SendSinpe() {
   const { id, initials, name, phoneNumber } = useLocalSearchParams();

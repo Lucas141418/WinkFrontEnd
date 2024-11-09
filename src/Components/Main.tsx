@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import ScreenCom from "./Screen";
-import BalanceSection from "./BalanceSection";
 import { UserProvider } from "../context/userInfoContext";
+import BalanceSection from "./BalanceSection";
 
 export default function Main() {
   // const [userInfo, setUserInfo] = useState<userInfoInterface | undefined>(

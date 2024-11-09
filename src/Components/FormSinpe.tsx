@@ -3,7 +3,7 @@ import { Pressable, TextInput, View, Text } from "react-native";
 import useFetchCreateTransaction from "../Hooks/useFetchCreateTransaction";
 import { TransactionCreationInterface } from "../types";
 import AppStyles from "../styles/AppStyles";
-import { Link, useRouter } from "expo-router";
+import {  useRouter } from "expo-router";
 import useFetchUserInfo from "../Hooks/useFetchUserInfo";
 
 type FormData = {
@@ -40,8 +40,8 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
 
     try {
       const { data } = await fetchCreationTransaction({ newtransaction });
-      const updatedUser = await getUserInfo({ userId: userInfo.userId });
-      setUserInfo(updatedUser);
+      // const updatedUser = await getUserInfo({ userId: userInfo.userId });
+      // setUserInfo(updatedUser);
       console.log(transaction);
       if (data) {
         router.replace("/");

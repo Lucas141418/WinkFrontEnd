@@ -1,48 +1,75 @@
-import { View, Text, FlatList } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, RefreshControl, ScrollView } from "react-native";
 import AppStyles from "../styles/AppStyles";
 import { formaterCurrency } from "../Utils";
 import { TransactionsCardsAnimated } from "./TransactionsCard";
 import ButtonSinpe from "./ButtonSinpe";
 import { UsersIds } from "../constants";
-import useFetchTransactionsHistory from "../Hooks/useFetchTransactionsHistory";
-import { useEffect } from "react";
 import useFetchUserInfo from "../Hooks/useFetchUserInfo";
+import { TransactionInterface, userInfoInterface } from "../types";
+import { transactionsJSON } from "../Mocks/transactions.json";
+import useFetchTransactionsHistory from "../Hooks/useFetchTransactionsHistory";
 
 export default function BalanceSection() {
-  const { userId1: userId } = UsersIds; //This line is for simulation  if there were a handleing of diferents users
+  const { userId1: userId } = UsersIds; // Simulate handling of different users
+  const [refreshing, setRefreshing] = useState(false);
+  const [userInfo, setUserInfo] = useState<userInfoInterface | null>({
+    balance: 10000,
+    userId: "dasd",
+    userPhone: "123123",
+    userName: "eduardo",
+  });
+  // const { getUserInfo, setUserInfo, userInfo } = useFetchUserInfo();
 
-  const { getUserInfo, setUserInfo, userInfo } = useFetchUserInfo();
+  const [transactionsHistory, setTransactionHistory] = useState<
+    TransactionInterface[]
+  >([]);
+
   useEffect(() => {
-    getUserInfo({ userId }).then(setUserInfo);
+    // Simulate fetching transactions and user info on mount
+    setTransactionHistory(transactionsJSON);
+    // getUserInfo({ userId }).then(setUserInfo);
   }, []);
+  // const { transactionsHistory, getTransactionHistory } =
+  //   useFetchTransactionsHistory();
 
-  // const [transactionsHistory, setTransactionHistory] = useState<
-  //   TransactionInterface[]
-  // >([]);
+  // useEffect(() => {
+  //   getTransactionHistory({ userId });
+  // }, [getTransactionHistory, userId]);
+  // const onRefresh = async () => {
+  //   setRefreshing(true);
+  //   const updatedUser = await getUserInfo({ userId });
+  //   setUserInfo(updatedUser as userInfoInterface);
+  //   setRefreshing(false);
+  // };
 
-  const { transactionsHistory, getTransactionHistory } =
-    useFetchTransactionsHistory();
+  const balanceSection = (balanceAmount: number) => (
+    <View style={AppStyles.containerBalance}>
+      <Text style={AppStyles.h1}>Cuenta Colones</Text>
+      <Text style={AppStyles.subText}>Saldo disponible</Text>
+      <Text style={AppStyles.currentBalance}>
+        {formaterCurrency(balanceAmount)}
+      </Text>
+      <Text style={AppStyles.subText}>¿Qué querés hacer?</Text>
+      <ButtonSinpe />
+      <Text style={AppStyles.h2}>Movimientos</Text>
+    </View>
+  );
 
-  useEffect(() => {
-    getTransactionHistory({ userId });
-  }, [getTransactionHistory, userId]);
-
-  if (!userInfo) return <Text> No hay datos de usuario</Text>;
+  if (!userInfo) return <Text>No hay datos de usuario</Text>;
 
   return (
     <View>
-      <View style={AppStyles.containerBalance}>
-        <Text style={AppStyles.h1}>Cuenta Colones</Text>
-        <Text style={AppStyles.subText}>Saldo disponible</Text>
-        <Text style={AppStyles.currentBalance}>
-          {formaterCurrency(userInfo.balance)}
-        </Text>
-        <Text style={AppStyles.subText}> ¿Qué querés hacer?</Text>
-
-        <ButtonSinpe />
-      </View>
-
-      <Text style={AppStyles.h2}>Movimientos</Text>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => onRefresh()}
+          />
+        }
+      >
+        {balanceSection(userInfo.balance)}
+      </ScrollView>
 
       <FlatList
         data={transactionsHistory}
@@ -50,7 +77,8 @@ export default function BalanceSection() {
         renderItem={({ item, index }) => (
           <TransactionsCardsAnimated transaction={item} index={index} />
         )}
-      ></FlatList>
+        style={AppStyles.transactionsList}
+      />
     </View>
   );
 }

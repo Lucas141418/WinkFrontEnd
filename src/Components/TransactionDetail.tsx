@@ -1,11 +1,9 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
-import { Link, useLocalSearchParams } from "expo-router";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import { View, Text, Pressable } from "react-native";
+import { Link } from "expo-router";
 import AppStyles from "../styles/AppStyles";
 import { formaterCurrency } from "../Utils";
 import useFetchTransaction from "../Hooks/useFetchTransaction";
-import { useEffect, useState } from "react";
-import { TransactionInterface } from "../types";
+import { useEffect } from "react";
 
 interface TransactionDetailProps {
   transactionId: string;
