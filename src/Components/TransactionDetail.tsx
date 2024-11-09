@@ -57,7 +57,7 @@ export default function TransactionDetail({
         <View>
           <Text style={AppStyles.TransactionSubText}>Descripción:</Text>
           <Text style={AppStyles.TransactionSectionText}>
-            Description Test{transactionDetailed.detailsTransaction}
+            {transactionDetailed.detailsTransaction}
           </Text>
         </View>
         <View>

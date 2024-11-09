@@ -64,9 +64,10 @@ export function createTransaction({
       if (!res.ok) {
         throw new Error(res.statusText);
       }
-
       return res.json();
     })
-    .then((data) => data)
+    .then((data) => {
+      return data;
+    })
     .catch((err) => console.log(err));
 }
