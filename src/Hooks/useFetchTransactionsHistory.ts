@@ -1,16 +1,27 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { TransactionInterface, userIdType } from "../types";
 import { fetchUserTransactions } from "../Services/FetchData";
 
 export default function useFetchTransactionsHistory() {
-  // eslint-disable-next-line prettier/prettier
   const [transactionsHistory, settransactionsHistory] = useState<
     TransactionInterface[]
   >([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const getTransactionHistory = useCallback(({ userId }: userIdType) => {
-    fetchUserTransactions({ userId }).then(settransactionsHistory);
+    console.log("calling the history");
+    setLoading(true); // Comienza la carga
+    fetchUserTransactions({ userId })
+      .then((data) => {
+        settransactionsHistory(data);
+      })
+      .catch((err) => {
+        console.error("Error al obtener las transacciones:", err);
+      })
+      .finally(() => {
+        setLoading(false); // Termina la carga
+      });
   }, []);
 
-  return { transactionsHistory, getTransactionHistory };
+  return { transactionsHistory, getTransactionHistory, loading };
 }

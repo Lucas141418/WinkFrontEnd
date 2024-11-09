@@ -35,3 +35,10 @@ export interface TransactionFetchInterface {
     userId: string;
     transactionId: string;
 }
+
+export interface Contact {
+    id: string;
+    name: string;
+    phoneNumber: string;
+    initials: string;
+  }
