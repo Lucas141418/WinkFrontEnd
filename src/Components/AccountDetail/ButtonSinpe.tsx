@@ -6,7 +6,7 @@ import AppStyles from "../../styles/AppStyles";
 export default function ButtonSinpe() {
   return (
     <View style={AppStyles.viewButton}>
-      <Link asChild href="/ContactsScreen">
+      <Link asChild href="/animation">
         <Pressable style={AppStyles.sinpeButton}>
           <Feather name="refresh-ccw" size={35} color="blue" />
         </Pressable>
