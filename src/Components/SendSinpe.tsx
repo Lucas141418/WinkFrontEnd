@@ -2,9 +2,10 @@ import { Text, View } from "react-native";
 import AppStyles from "../styles/AppStyles";
 import { useLocalSearchParams } from "expo-router";
 import FormSinpe from "./FormSinpe";
+import { ExtractFirstLetters } from "../constants";
 
 export default function SendSinpe() {
-  const { id, initials, name, phoneNumber } = useLocalSearchParams();
+  const { id, name, phoneNumber } = useLocalSearchParams();
 
   const safeId = Array.isArray(id) ? id[0] : id;
   const safeName = Array.isArray(name) ? name[0] : name;
@@ -18,11 +19,13 @@ export default function SendSinpe() {
 
       <View style={AppStyles.SinpeUserContainer}>
         <View style={AppStyles.TransactioncontactBackground}>
-          <Text style={AppStyles.TransactionInitialPreview}>{initials}</Text>
+          <Text style={AppStyles.TransactionInitialPreview}>
+            {ExtractFirstLetters({ nameP: safeName })}
+          </Text>
         </View>
         <View style={AppStyles.SinpeUserInfo}>
           <Text style={AppStyles.text}>{name}</Text>
-          <Text style={AppStyles.SinpeUserNumber}>{phoneNumber}</Text>
+          <Text style={AppStyles.SinpeUserNumber}>{safePhoneNumber}</Text>
         </View>
       </View>
 

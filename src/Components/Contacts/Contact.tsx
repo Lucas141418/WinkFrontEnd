@@ -1,10 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {
-  FlatList,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { FlatList, SectionList, Text, TextInput, View } from "react-native";
 import AppStyles from "../../styles/AppStyles";
 import { Controller, useForm } from "react-hook-form";
 import { useMemo, useState } from "react";
@@ -17,13 +12,13 @@ type FormData = {
 
 export const ContactList = () => {
   const { control } = useForm<FormData>();
-  const [conctactSearch, setConctactSearch] = useState<string>("");
+  const [contactSearch, setContactSearch] = useState<string>("");
 
   const filteredContacts = useMemo(() => {
     return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(conctactSearch.toLowerCase()),
+      contact.name.toLowerCase().includes(contactSearch.toLowerCase()),
     );
-  }, [conctactSearch]);
+  }, [contactSearch]);
 
   return (
     <View>
@@ -38,7 +33,7 @@ export const ContactList = () => {
             onBlur={onBlur}
             onChangeText={(text) => {
               onChange(text);
-              setConctactSearch(text);
+              setContactSearch(text);
             }}
             value={value}
           />
@@ -51,9 +46,6 @@ export const ContactList = () => {
         keyExtractor={(Contact) => Contact.id}
         ItemSeparatorComponent={() => <View style={AppStyles.ContactsRow} />}
       />
-      {filteredContacts.length <= 0 && (
-        <Text style={AppStyles.errorText}> El contacto no se encuentra</Text>
-      )}
     </View>
   );
 };

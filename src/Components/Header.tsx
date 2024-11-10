@@ -6,12 +6,15 @@ import AppStyles from "../styles/AppStyles";
 export default function Header({ textHeader }: { textHeader: string }) {
   return (
     <View style={AppStyles.header}>
-      <Link asChild href="/" style={AppStyles.headerBackButton}>
-        <Pressable>
-          <AntDesign name="arrowleft" size={35} color="blue" />
-        </Pressable>
-      </Link>
+      <View style={AppStyles.HeaderArrow}>
+        <Link asChild href="/" style={AppStyles.headerBackButton}>
+          <Pressable>
+            <AntDesign name="arrowleft" size={35} color="blue" />
+          </Pressable>
+        </Link>
+      </View>
       <Text style={AppStyles.headerText}>{textHeader}</Text>
+      <View style={AppStyles.placeholderHeader} />
     </View>
   );
 }

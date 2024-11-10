@@ -6,7 +6,7 @@ import { UserInfoContext } from "../context/userInfoContext";
 export default function useFetchUserInfo() {
   const { setUserInfo, userInfo } = useContext(UserInfoContext);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const getUserInfo = useCallback(

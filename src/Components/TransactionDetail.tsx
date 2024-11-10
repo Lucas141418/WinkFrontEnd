@@ -3,9 +3,11 @@ import { Link } from "expo-router";
 import AppStyles from "../styles/AppStyles";
 import { formaterCurrency } from "../Utils";
 import useFetchTransaction from "../Hooks/useFetchTransaction";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TransactionInterface } from "../types";
 import { transactionsJSON } from "../Mocks/transactions.json";
+import { ExtractFirstLetters } from "../constants";
+import { UserInfoContext } from "../context/userInfoContext";
 
 interface TransactionDetailProps {
   transactionId: string;
@@ -41,7 +43,9 @@ export default function TransactionDetail({
   return (
     <View style={AppStyles.TransactionContainer}>
       <View style={AppStyles.TransactioncontactBackground}>
-        <Text style={AppStyles.TransactionInitialPreview}>CN</Text>
+        <Text style={AppStyles.TransactionInitialPreview}>
+          {ExtractFirstLetters({ nameP: transactionDetailed.recipientName })}
+        </Text>
       </View>
 
       <Text style={AppStyles.TransactionText}>

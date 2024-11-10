@@ -189,6 +189,11 @@ const AppStyles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: "space-between",
   },
+  ContactArrow: {
+    color: COLORS.primaryColor,
+    fontSize: FONT_SIZE.text,
+    fontWeight: "bold",
+  },
   SinpeUserContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -260,25 +265,27 @@ const AppStyles = StyleSheet.create({
   },
   //Cambiar o mejora
   header: {
-    borderColor: COLORS.yellow,
-    borderWidth: 2,
     backgroundColor: COLORS.white,
     flexDirection: "row",
     alignItems: "center",
-    gap: 20,
+    justifyContent: "space-around",
     padding: 16,
     paddingTop: 40,
   },
+  HeaderArrow: {
+    flex: 1,
+    marginRight: 10,
+  },
   headerText: {
-    borderColor: COLORS.yellow,
-    borderWidth: 2,
+    flex: 0,
     textAlign: "center",
-    alignContent: "center",
-    alignSelf: "center",
     color: COLORS.primaryColor,
     fontSize: FONT_SIZE.h3,
     fontWeight: "bold",
-    justifyContent: "center",
+  },
+  placeholderHeader: {
+    flex: 1,
+    width: 0,
   },
   headerBackButton: {},
   sectionTitle: {
