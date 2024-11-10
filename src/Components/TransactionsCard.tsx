@@ -45,7 +45,7 @@ export function TransactionsCardsAnimated({
     Animated.timing(opacity, {
       toValue: 1,
       duration: 500,
-      delay: index * 100,
+      delay: index * 250,
       useNativeDriver: true,
     }).start();
   }, [opacity, index]);

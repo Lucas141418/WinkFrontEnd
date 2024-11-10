@@ -17,26 +17,26 @@ export default function TransactionDetail({
   transactionId,
   userId,
 }: TransactionDetailProps) {
-  // const [transactionDetailed, setTransactionDetailed] =
-  //   useState<TransactionInterface>({
-  //     detailsTransaction: "",
-  //     timeTransaction: "",
-  //     recipientPhone: "",
-  //     userId: "",
-  //     recipientName: "",
-  //     amount: 0,
-  //     recipientId: "",
-  //     transactionId: "",
-  //   });
-  const { transactionDetailed, getTransaction } = useFetchTransaction();
-
-  useEffect(() => {
-    getTransaction({ userId, transactionId });
-  }, [transactionId, userId]);
+  const [transactionDetailed, setTransactionDetailed] =
+    useState<TransactionInterface>({
+      detailsTransaction: "",
+      timeTransaction: "",
+      recipientPhone: "",
+      userId: "",
+      recipientName: "",
+      amount: 0,
+      recipientId: "",
+      transactionId: "",
+    });
+  // const { transactionDetailed, getTransaction } = useFetchTransaction();
 
   // useEffect(() => {
-  //   setTransactionDetailed(transactionsJSON[0]);
-  // }, [transactionId]);
+  //   getTransaction({ userId, transactionId });
+  // }, [transactionId, userId]);
+
+  useEffect(() => {
+    setTransactionDetailed(transactionsJSON[0]);
+  }, [transactionId]);
 
   return (
     <View style={AppStyles.TransactionContainer}>

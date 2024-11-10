@@ -28,6 +28,7 @@ const COLORS = {
   green: "#3be477",
   light_purple: "#D6D6FF",
   purple: "#4A4AFF",
+  light_blue: "#787cf9",
 };
 
 const FONT_SIZE = {
@@ -37,6 +38,7 @@ const FONT_SIZE = {
   text: getFontSize(16),
   subText: getFontSize(18.5),
   timeText: getFontSize(14),
+  amountNumber: getFontSize(13),
   bigCurrency: getFontSize(35),
 };
 
@@ -73,9 +75,11 @@ const AppStyles = StyleSheet.create({
     justifyContent: "center",
     gap: 18,
   },
-  containerSinpe: {
+  SinpeContainer: {
+    flex: 1,
     gap: 12,
-    paddingBottom: 10,
+    paddingHorizontal: 16,
+    paddingTop: 20,
   },
   currentBalance: {
     color: COLORS.gray,
@@ -181,6 +185,25 @@ const AppStyles = StyleSheet.create({
     shadowRadius: 5.84,
     width: scaleHorizontal(65),
   },
+  SinpeInputsContainer: {
+    flexGrow: 1,
+    justifyContent: "space-between",
+  },
+  SinpeUserContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 0,
+    padding: 20,
+    gap: 20,
+    marginBottom: 20,
+  },
+  SinpeUserNumber: {
+    color: COLORS.light_blue,
+    fontSize: FONT_SIZE.amountNumber,
+  },
+  SinpeUserInfo: {
+    flex: 1,
+  },
   transactionAmount: {
     color: COLORS.red,
     fontSize: FONT_SIZE.subText,
@@ -231,25 +254,33 @@ const AppStyles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 1,
     fontSize: FONT_SIZE.text,
+    marginTop: 12,
     marginBottom: 16,
     padding: 10,
   },
   //Cambiar o mejora
   header: {
-    alignItems: "center",
+    borderColor: COLORS.yellow,
+    borderWidth: 2,
     backgroundColor: COLORS.white,
     flexDirection: "row",
+    alignItems: "center",
     gap: 20,
     padding: 16,
     paddingTop: 40,
   },
   headerText: {
-    alignItems: "center",
+    borderColor: COLORS.yellow,
+    borderWidth: 2,
+    textAlign: "center",
+    alignContent: "center",
     alignSelf: "center",
     color: COLORS.primaryColor,
-    fontSize: FONT_SIZE.h2,
+    fontSize: FONT_SIZE.h3,
     fontWeight: "bold",
+    justifyContent: "center",
   },
+  headerBackButton: {},
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",

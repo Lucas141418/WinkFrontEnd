@@ -3,7 +3,7 @@ import { Pressable, TextInput, View, Text } from "react-native";
 import useFetchCreateTransaction from "../Hooks/useFetchCreateTransaction";
 import { TransactionCreationInterface } from "../types";
 import AppStyles from "../styles/AppStyles";
-import {  useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import useFetchUserInfo from "../Hooks/useFetchUserInfo";
 
 type FormData = {
@@ -18,6 +18,7 @@ interface FormSinpeProps {
 
 // eslint-disable-next-line prettier/prettier
 export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
+  // eslint-disable-next-line prettier/prettier
   const {
     control,
     handleSubmit,
@@ -51,61 +52,65 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
     }
   };
   return (
-    <View>
-      <Text>Monto</Text>
-      <Controller
-        name="amount"
-        control={control}
-        rules={{
-          validate: {
-            positive: (value) =>
-              // eslint-disable-next-line prettier/prettier
-              parseFloat(value) > 0 ||
-              "El monto de la tranferencia debe ser mayor que 0",
-          },
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            placeholder="₡0.00"
-            style={AppStyles.searchInput}
-            keyboardType="numeric"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
+    <View style={AppStyles.SinpeInputsContainer}>
+      <View>
+        <Text style={AppStyles.h3}>Monto</Text>
+        <Controller
+          name="amount"
+          control={control}
+          rules={{
+            validate: {
+              positive: (value) =>
+                // eslint-disable-next-line prettier/prettier
+                parseFloat(value) > 0 ||
+                "El monto de la tranferencia debe ser mayor que 0",
+            },
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              placeholder="₡0.00"
+              style={AppStyles.searchInput}
+              keyboardType="numeric"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+        />
+        {errors.amount && (
+          <Text style={AppStyles.errorText}>{errors.amount.message}</Text>
         )}
-      />
-      {errors.amount && (
-        <Text style={AppStyles.errorText}>{errors.amount.message}</Text>
-      )}
 
-      <Text>Descripción</Text>
-      <Controller
-        name="detail"
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: "La descripción de la tranferencia es requerida",
-          },
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={AppStyles.searchInput}
-            placeholder="Descripción"
-            keyboardType="default"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
+        <Text style={AppStyles.h3}>Detalle</Text>
+        <Controller
+          name="detail"
+          control={control}
+          rules={{
+            required: {
+              value: true,
+              message: "La descripción de la tranferencia es requerida",
+            },
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={AppStyles.searchInput}
+              placeholder="Descripción"
+              keyboardType="default"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+        />
+        {errors.detail && (
+          <Text style={AppStyles.errorText}>{errors.detail.message}</Text>
         )}
-      />
-      {errors.detail && (
-        <Text style={AppStyles.errorText}>{errors.detail.message}</Text>
-      )}
-
-      <Pressable onPress={handleSubmit(onSubmit)}>
-        <Text>Confirmar</Text>
+      </View>
+      <Pressable
+        onPress={handleSubmit(onSubmit)}
+        style={AppStyles.Transactionbutton}
+      >
+        <Text style={AppStyles.buttonText}>Confirmar</Text>
       </Pressable>
     </View>
   );

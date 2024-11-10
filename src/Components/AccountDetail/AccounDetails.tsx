@@ -12,28 +12,28 @@ export default function AccountDetails() {
   const { userId1: userId } = UsersIds; // Simulate handling of different users
 
 
-  // const [transactionsHistory, setTransactionHistory] = useState<
-  //   TransactionInterface[]
-  // >([]);
-
-  // useEffect(() => {
-  //   // Simulate fetching transactions and user info on mount
-  //   setTransactionHistory(transactionsJSON);
-  // }, []);
-  const { transactionsHistory, getTransactionHistory, lastEvaluatedKey } =
-    useFetchTransactionsHistory();
+  const [transactionsHistory, setTransactionHistory] = useState<
+    TransactionInterface[]
+  >([]);
 
   useEffect(() => {
-    getTransactionHistory({ userId, lastEvaluatedKey: null });
-  }, [getTransactionHistory]);
+    // Simulate fetching transactions and user info on mount
+    setTransactionHistory(transactionsJSON);
+  }, []);
+  // const { transactionsHistory, getTransactionHistory, lastEvaluatedKey } =
+  //   useFetchTransactionsHistory();
 
-  function handleEndReached() {
-    if (lastEvaluatedKey) {
-      getTransactionHistory({ userId, lastEvaluatedKey });
-    }
-  }
+  // useEffect(() => {
+  //   getTransactionHistory({ userId, lastEvaluatedKey: null });
+  // }, [getTransactionHistory]);
 
-  // function handleEndReached() {}
+  // function handleEndReached() {
+  //   if (lastEvaluatedKey) {
+  //     getTransactionHistory({ userId, lastEvaluatedKey });
+  //   }
+  // }
+
+  function handleEndReached() {}
 
   // if (!transactionsHistory) return <Text>No hay datos de usuario</Text>;
 

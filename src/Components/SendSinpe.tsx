@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import AppStyles from "../styles/AppStyles";
-import FormSinpe from "./FormSinpe";
 import { useLocalSearchParams } from "expo-router";
+import FormSinpe from "./FormSinpe";
 
 export default function SendSinpe() {
   const { id, initials, name, phoneNumber } = useLocalSearchParams();
@@ -13,15 +13,17 @@ export default function SendSinpe() {
     : phoneNumber;
 
   return (
-    <View style={AppStyles.containerSinpe}>
+    <View style={AppStyles.SinpeContainer}>
       <Text style={AppStyles.h3}>Transferir a</Text>
 
-      <View>
+      <View style={AppStyles.SinpeUserContainer}>
         <View style={AppStyles.TransactioncontactBackground}>
           <Text style={AppStyles.TransactionInitialPreview}>{initials}</Text>
         </View>
-        <Text style={AppStyles.text}>{name}</Text>
-        <Text>{phoneNumber}</Text>
+        <View style={AppStyles.SinpeUserInfo}>
+          <Text style={AppStyles.text}>{name}</Text>
+          <Text style={AppStyles.SinpeUserNumber}>{phoneNumber}</Text>
+        </View>
       </View>
 
       <FormSinpe name={safeName} id={safeId} phoneNumber={safePhoneNumber} />

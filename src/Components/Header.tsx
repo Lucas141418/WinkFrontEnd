@@ -6,7 +6,7 @@ import AppStyles from "../styles/AppStyles";
 export default function Header({ textHeader }: { textHeader: string }) {
   return (
     <View style={AppStyles.header}>
-      <Link asChild href="/">
+      <Link asChild href="/" style={AppStyles.headerBackButton}>
         <Pressable>
           <AntDesign name="arrowleft" size={35} color="blue" />
         </Pressable>
