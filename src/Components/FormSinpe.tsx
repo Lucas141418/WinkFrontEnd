@@ -3,7 +3,7 @@ import { Pressable, TextInput, View, Text } from "react-native";
 import useFetchCreateTransaction from "../Hooks/useFetchCreateTransaction";
 import { TransactionCreationInterface } from "../types";
 import AppStyles from "../styles/AppStyles";
-import { Link, useRouter } from "expo-router";
+import {  useRouter } from "expo-router";
 import useFetchUserInfo from "../Hooks/useFetchUserInfo";
 
 type FormData = {

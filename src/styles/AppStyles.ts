@@ -1,4 +1,6 @@
+/* eslint-disable react-native/sort-styles */
 import { Dimensions, PixelRatio, Platform, StyleSheet } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 const { width: widthScreen, height: heightScreen } = Dimensions.get("window");
 
 const HorizontalVariable = widthScreen / 375;
@@ -39,9 +41,7 @@ const FONT_SIZE = {
 };
 
 const AppStyles = StyleSheet.create({
-  borderTest: {
-    borderColor: COLORS.green,
-    borderWidth: 2,
+  mainContainer: {
     flex: 1,
   },
   contactDetails: {
@@ -62,28 +62,20 @@ const AppStyles = StyleSheet.create({
   },
   container: {
     backgroundColor: COLORS.white,
-    borderColor: COLORS.red,
-    borderWidth: 8,
     flex: 1,
+    marginBottom: 10,
   },
   containerBalance: {
-    borderColor: COLORS.primaryColor,
-    borderWidth: 2,
-    gap: 12,
-    paddingBottom: 10,
+    borderRadius: 8, // Opcional: para esquinas redondeadas
+    marginHorizontal: 18,
+    flex: 1,
+    height: scaleVertical(380),
+    justifyContent: "center",
+    gap: 18,
   },
   containerSinpe: {
-    borderColor: COLORS.primaryColor,
-    borderWidth: 2,
     gap: 12,
     paddingBottom: 10,
-  },
-  TransactionContainer: {
-    borderColor: COLORS.yellow,
-    borderWidth: 15,
-    flex: 1,
-    gap: 12,
-    padding: 14,
   },
   currentBalance: {
     color: COLORS.gray,
@@ -102,6 +94,7 @@ const AppStyles = StyleSheet.create({
     color: COLORS.primaryColor,
     fontSize: FONT_SIZE.h1,
     fontWeight: "bold",
+    marginBottom: 4,
   },
   h2: {
     fontSize: FONT_SIZE.h2,
@@ -115,15 +108,16 @@ const AppStyles = StyleSheet.create({
 
   logo: {
     alignSelf: "center",
-    borderColor: COLORS.primaryColor,
-    borderWidth: 1,
-    height: "20%",
-    marginTop: 15,
+    height: 100,
     resizeMode: "contain",
-    width: "34%",
+    width: 100,
   },
-  separatorContacts: {
-    backgroundColor: COLORS.gray_white,
+  TransactionSubText: {
+    color: COLORS.gray_white,
+    fontSize: FONT_SIZE.timeText,
+    marginBottom: 5,
+  },
+  ContactsRow: {
     height: 1,
     marginVertical: 5,
   },
@@ -131,17 +125,21 @@ const AppStyles = StyleSheet.create({
     color: COLORS.gray,
     fontSize: FONT_SIZE.text,
   },
-  TransactionSubText: {
-    color: COLORS.gray_white,
-    fontSize: FONT_SIZE.timeText,
-    marginBottom: 5,
-  },
   subText: {
     fontSize: FONT_SIZE.subText,
   },
   TransactionSectionText: {
     fontSize: FONT_SIZE.text,
     marginBottom: 15,
+  },
+  TransactionContainer: {
+    flex: 1,
+    gap: 12,
+    padding: 14,
+  },
+  transactionsList: {
+    height: scaleVertical(356),
+    marginHorizontal: 15,
   },
   TransactioncontactBackground: {
     alignItems: "center",
@@ -206,8 +204,6 @@ const AppStyles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals
   transactionCard: {
     alignItems: "center",
-    borderColor: "#e0e0e0",
-    borderWidth: 1,
     flexDirection: "row",
     height: scaleVertical(68),
     justifyContent: "space-between",
@@ -228,6 +224,7 @@ const AppStyles = StyleSheet.create({
   },
   viewButton: {
     alignItems: "center",
+    gap: 10,
   },
   searchInput: {
     borderColor: COLORS.gray_white,
@@ -244,6 +241,7 @@ const AppStyles = StyleSheet.create({
     flexDirection: "row",
     gap: 20,
     padding: 16,
+    paddingTop: 40,
   },
   headerText: {
     alignItems: "center",

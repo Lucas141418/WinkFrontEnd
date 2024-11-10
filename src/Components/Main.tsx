@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import ScreenCom from "./Screen";
-import BalanceSection from "./BalanceSection";
 import { UserProvider } from "../context/userInfoContext";
+import AccountDetails from "../Components/AccountDetail/AccounDetails";
 
 export default function Main() {
   // const [userInfo, setUserInfo] = useState<userInfoInterface | undefined>(
@@ -11,7 +11,7 @@ export default function Main() {
   return (
     <UserProvider>
       <ScreenCom>
-        <BalanceSection />
+        <AccountDetails />
 
         <StatusBar style="auto" />
       </ScreenCom>

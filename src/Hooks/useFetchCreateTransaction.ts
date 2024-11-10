@@ -23,7 +23,7 @@ export default function useFetchCreateTransaction() {
   }: {
     newtransaction: TransactionCreationInterface;
   }) => {
-    console.log("The transaction was called ");
+    console.log("The creation transaction was called ");
     setLoading(true);
     setError(null);
     try {

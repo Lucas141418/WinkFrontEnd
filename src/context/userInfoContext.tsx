@@ -29,4 +29,3 @@ export function UserProvider({ children }: { children: ReactNode }) {
     </UserInfoContext.Provider>
   );
 }
-

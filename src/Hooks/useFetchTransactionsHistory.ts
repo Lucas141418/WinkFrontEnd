@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { TransactionInterface, userIdType } from "../types";
+import { TransactionInterface, transactionsLazyInterface } from "../types";
 import { fetchUserTransactions } from "../Services/FetchData";
 
 export default function useFetchTransactionsHistory() {
@@ -7,21 +7,35 @@ export default function useFetchTransactionsHistory() {
     TransactionInterface[]
   >([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [lastEvaluatedKey, setLastEvaluatedKey] = useState<string>("");
 
-  const getTransactionHistory = useCallback(({ userId }: userIdType) => {
-    console.log("calling the history");
-    setLoading(true); // Comienza la carga
-    fetchUserTransactions({ userId })
-      .then((data) => {
-        settransactionsHistory(data);
-      })
-      .catch((err) => {
-        console.error("Error al obtener las transacciones:", err);
-      })
-      .finally(() => {
-        setLoading(false); // Termina la carga
-      });
-  }, []);
+  const getTransactionHistory = useCallback(
+    ({ userId, lastEvaluatedKey }: transactionsLazyInterface) => {
+      console.log("calling the history");
+      setLoading(true);
+      fetchUserTransactions({ userId, lastEvaluatedKey })
+        .then((data) => {
+          settransactionsHistory((prevState) => [
+            ...prevState,
+            ...data.transactions,
+          ]);
+          setLastEvaluatedKey(data.lastEvaluatedKey || null);
+        })
+        .catch((err) => {
+          console.error("Error al obtener las transacciones:", err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    },
+    [],
+  );
 
-  return { transactionsHistory, getTransactionHistory, loading };
+  return {
+    transactionsHistory,
+    getTransactionHistory,
+    loading,
+    setLastEvaluatedKey,
+    lastEvaluatedKey,
+  };
 }
