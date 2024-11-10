@@ -111,16 +111,13 @@ const AppStyles = StyleSheet.create({
     height: 100,
     resizeMode: "contain",
     width: 100,
-    borderColor: COLORS.green,
-    borderWidth: 2,
   },
   TransactionSubText: {
     color: COLORS.gray_white,
     fontSize: FONT_SIZE.timeText,
     marginBottom: 5,
   },
-  separatorContacts: {
-    backgroundColor: COLORS.gray_white,
+  ContactsRow: {
     height: 1,
     marginVertical: 5,
   },
@@ -244,6 +241,7 @@ const AppStyles = StyleSheet.create({
     flexDirection: "row",
     gap: 20,
     padding: 16,
+    paddingTop: 40,
   },
   headerText: {
     alignItems: "center",

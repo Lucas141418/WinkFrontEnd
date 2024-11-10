@@ -3,7 +3,9 @@ import { Link } from "expo-router";
 import AppStyles from "../styles/AppStyles";
 import { formaterCurrency } from "../Utils";
 import useFetchTransaction from "../Hooks/useFetchTransaction";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { TransactionInterface } from "../types";
+import { transactionsJSON } from "../Mocks/transactions.json";
 
 interface TransactionDetailProps {
   transactionId: string;
@@ -31,6 +33,10 @@ export default function TransactionDetail({
   useEffect(() => {
     getTransaction({ userId, transactionId });
   }, [transactionId, userId]);
+
+  // useEffect(() => {
+  //   setTransactionDetailed(transactionsJSON[0]);
+  // }, [transactionId]);
 
   return (
     <View style={AppStyles.TransactionContainer}>

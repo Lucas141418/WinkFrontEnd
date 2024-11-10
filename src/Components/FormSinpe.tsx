@@ -40,8 +40,8 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
 
     try {
       const { data } = await fetchCreationTransaction({ newtransaction });
-      // const updatedUser = await getUserInfo({ userId: userInfo.userId });
-      // setUserInfo(updatedUser);
+      const updatedUser = await getUserInfo({ userId: userInfo.userId });
+      setUserInfo(updatedUser);
       console.log(transaction);
       if (data) {
         router.replace("/");

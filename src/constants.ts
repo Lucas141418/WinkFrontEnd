@@ -1,4 +1,4 @@
-import { Contact } from "./types";
+import { Contact, transactionsLazyInterface } from "./types";
 
 export const UsersIds = {
   userId1: "c717270e-6239-4331-9e8d-f64246ee470b",
@@ -17,8 +17,9 @@ export const API_URLS_WINK = {
   }) => baseURl + `/getTransactionById/${userId}/${transactionId}`,
   GET_USER_INFO_BY_ID: ({ userId }: { userId: string }) =>
     baseURl + `/getUserInfoById/${userId}`,
-  GET_USER_TRANSACTIONS: ({ userId }: { userId: string }) =>
-    baseURl + `/getUserTransactions/${userId}`,
+  // eslint-disable-next-line prettier/prettier
+  GET_USER_TRANSACTIONS: ({ userId, lastEvaluatedKey }: transactionsLazyInterface) => 
+    baseURl + `/getUserTransactions/${userId}?lastEvaluatedKey=${encodeURIComponent(lastEvaluatedKey)}`,
 };
 
 export const contacts: Contact[] = [
