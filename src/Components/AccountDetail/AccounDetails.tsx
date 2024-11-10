@@ -11,7 +11,6 @@ import useFetchTransactionsHistory from "../../Hooks/useFetchTransactionsHistory
 export default function AccountDetails() {
   const { userId1: userId } = UsersIds; // Simulate handling of different users
 
-
   const [transactionsHistory, setTransactionHistory] = useState<
     TransactionInterface[]
   >([]);

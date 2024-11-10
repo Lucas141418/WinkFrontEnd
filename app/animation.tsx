@@ -7,6 +7,11 @@ import WinkAnimation from "../src/Components/Animation/WinkAnimation";
 export default function SinpeScreen() {
   return (
     <ScreenCom>
+      <Stack.Screen
+        options={{
+          header: () => <Header textHeader="Enviar dinero" />,
+        }}
+      />
       <WinkAnimation />
     </ScreenCom>
   );

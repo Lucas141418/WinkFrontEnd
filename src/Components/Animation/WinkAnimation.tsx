@@ -1,33 +1,24 @@
-/* eslint-disable react-native/no-raw-text */
-/* eslint-disable react-native/no-single-element-style-arrays */
-/* eslint-disable react-native/no-unused-styles */
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react-native/sort-styles */
-/* eslint-disable import/export */
-/* eslint-disable react-native/no-inline-styles */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-native/no-color-literals */
 import React, { useEffect, useState } from "react";
 import Animated, {
   PinwheelIn,
   PinwheelOut,
   runOnJS,
   StretchInY,
-  useAnimatedStyle,
-  useSharedValue,
-  withRepeat,
-  withTiming,
+  StretchOutY,
 } from "react-native-reanimated";
-import { View, StyleSheet, TextProps, Easing } from "react-native";
+import { View, TextProps } from "react-native";
+import AnimationStyle from "./AnimationStyle";
+import { Stack } from "expo-router";
+import { Header } from "react-native/Libraries/NewAppScreen";
 
 type WinkAnimationProps = TextProps & {
   stagger?: number;
-  onEnterFinish: () => void;
-  onExitFinish: () => void;
+  onEnterFinish?: () => void;
+  onExitFinish?: () => void;
 };
 
 export default function WinkAnimation({
-  stagger = 100,
+  stagger = 300,
   onEnterFinish,
   onExitFinish,
   ...rest
@@ -35,31 +26,46 @@ export default function WinkAnimation({
   const [outer, setOuter] = useState<boolean>(true);
   const [inner, setInner] = useState<boolean>(true);
   const letters = "WINK".split("");
-  const sv = useSharedValue<number>(0);
+  const duration = 2000;
 
+  useEffect(() => {
+    if (outer) {
+      const timer = setTimeout(() => {
+        setInner(false);
+      }, duration);
+      const timer2 = setTimeout(() => {
+        setOuter(false);
+      }, duration * 2);
+
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(timer2);
+      };
+    }
+  }, [outer]);
+
+  useEffect(() => {
+    console.log("The animation was render ");
+  }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={AnimationStyle.container}>
       {outer && (
         <Animated.View
           entering={PinwheelIn}
           exiting={PinwheelOut}
-          style={styles.Box}
+          style={AnimationStyle.Box}
         >
           {inner && (
-            <Animated.View
-              style={styles.FaceContainer}
-              entering={PinwheelIn}
-              exiting={PinwheelOut}
-            >
-              <View style={styles.LetterContainer}>
-                {letters.map((letter, index) => (
-                  <View
-                    style={styles.letterContainerInside}
-                    key={`letter-${index}`}
-                  >
+            <View style={AnimationStyle.LetterContainer}>
+              {letters.map((letter, index) => (
+                <View
+                  style={AnimationStyle.letterContainerInside}
+                  key={`letter-${letter}--index-${index}`}
+                >
+                  <Animated.View>
                     <Animated.Text
-                      style={styles.WinkText}
+                      style={AnimationStyle.WinkText} // Solo los estilos base van aquí
                       {...rest}
                       entering={StretchInY.springify()
                         .damping(15)
@@ -67,67 +73,28 @@ export default function WinkAnimation({
                         .delay(index * stagger)
                         .withCallback(() => {
                           if (index === letters.length - 1 && onEnterFinish) {
-                            // setInner(false);
                             runOnJS(onEnterFinish)();
                           }
                         })}
-                      exiting={StretchInY.springify()
+                      exiting={StretchOutY.springify()
                         .damping(15)
                         .stiffness(150)
                         .delay(index * stagger)
                         .withCallback(() => {
                           if (index === letters.length - 1 && onExitFinish) {
-                            // setInner(false);
                             runOnJS(onExitFinish)();
                           }
                         })}
                     >
                       {letter}
                     </Animated.Text>
-                  </View>
-                ))}
-              </View>
-            </Animated.View>
+                  </Animated.View>
+                </View>
+              ))}
+            </View>
           )}
         </Animated.View>
       )}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    height: 400,
-  },
-  Box: {
-    width: 120,
-    height: 120,
-    backgroundColor: "#4c51f7",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 20,
-    margin: 20,
-    position: "relative",
-  },
-  LetterContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 4,
-  },
-  WinkText: {
-    fontSize: 40,
-    fontWeight: "bold",
-    color: "#fff",
-    textAlign: "center",
-  },
-  FaceContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    position: "relative",
-  },
-  letterContainerInside: {},
-});
