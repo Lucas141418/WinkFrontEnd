@@ -1,66 +1,5 @@
 <h1 align="center" style="color: blue;">Wink</h1>
 
-<h2>Repositorio de la Aplicación Wink UI</h2>
-<p>Repositorio para el desarrollo de la aplicación Wink UI.</p>
-
-  <h3>Objetivo</h3>
-  <p>Desarrollar una aplicación móvil en React Native que simula el envío de dinero por SINPE Móvil y muestra un historial de estos envíos.<p>
-  <h3>Requerimientos</h3>
-  <h4>1. Pantalla Inicial</h4>
-  <ul>
-      <li>Al ingresar a la aplicación, se debe mostrar:
-          <ul>
-              <li>El balance actual del usuario</li>
-              <li>Los movimientos de dinero realizados por el usuario</li>
-              <li>Un botón para realizar un envío SINPE Móvil (sin transacciones de dinero reales)</li>
-          </ul>
-      </li>
-  </ul>
-  <h4>2. Balance</h4>
-  <p>El balance está almacenado en la base de datos y se obtiene cada vez que el usuario entra a la aplicación o realiza la acción de "pullto refresh".</p>
-  <h4>3. Movimientos</h4>
-  <p>Mostrar una lista de todos los movimientos realizados por el usuario, ordenados por fecha (del más reciente al más antiguo). Cadamovimiento debe incluir:</p>
-  <ul>
-      <li>Nombre del contacto</li>
-      <li>Monto</li>
-      <li>Fecha</li>
-      <li>Hora</li>
-  </ul>
-  <h4>4. Detalles de Movimientos</h4>
-  <p>Al seleccionar un movimiento, se deben mostrar sus detalles:</p>
-  <ul>
-      <li>Nombre del contacto</li>
-      <li>Número de teléfono del destinatario</li>
-      <li>Monto</li>
-      <li>Fecha y hora del movimiento</li>
-  </ul>
-  <h4>5. Botón de Envío</h4>
-  <p>Al hacer tap en este botón, se inicia el siguiente flujo:</p>
-  <ol>
-      <li>Se muestra una pantalla con la lista de contactos del dispositivo, permitiendo al usuario seleccionar uno.</li>
-      <li>Luego de seleccionar un contacto, se muestra otra pantalla solicitando el monto a transferir, una descripción y un botón de"Aceptar".</li>
-      <li>Al aceptar:
-          <ul>
-              <li>Se reduce el balance del usuario según el monto del envío.</li>
-              <li>Se genera un nuevo movimiento.</li>
-              <li>La aplicación navega de regreso a la pantalla principal, donde se muestra la lista de movimientos actualizada con el nuevoenvío.</li>
-          </ul>
-      </li>
-  </ol>
-  <h4>6. Animación de Carga</h4>
-  <p>Mostrar una animación de carga cuando la aplicación esté esperando datos.</p>
-  <h4>7. Carga Diferida (Lazy Loading)</h4>
-  <p>Los movimientos se cargan de 10 en 10. Al llegar al último movimiento cargado, se obtienen y muestran otros 10, y así sucesivamentehasta que no queden más movimientos por cargar.</p>
-  <h3>Requerimientos Técnicos</h3>
-  <ul>
-      <li>Crear repositorios separados en GitHub para la aplicación móvil y el backend:
-          <ul>
-              <li><strong>Aplicación Móvil</strong>: Desarrollada en React Native con TypeScript y Expo.</li>
-              <li><strong>Backend</strong>: Desarrollado en Node.js, accesible mediante una o más funciones Lambda en AWS.</li>
-          </ul>
-      </li>
-      <li><strong>Almacenamiento de Datos</strong>: Se puede utilizar cualquier motor de base de datos, recomendando DynamoDB de AWS porsimplicidad.</li>
-  </ul>
   <h3>Diseño de la Aplicación</h3>
   <p>El diseño de la aplicación se encuentra aquí: <a href="https://www.figma.com/file/E2FpYVGGakgu0qyBDdWA8A/Wink---Prueba-t%C3%A9cnicanode-id=0%3A1">Diseño en Figma</a></p>
   <h3>Estandares</h3>
@@ -120,12 +59,6 @@
       <td>Identifica de manera única a cada usuario en el sistema.</td>
     </tr>
     <tr>
-      <td>UserBalance</td>
-      <td>userId</td>
-      <td>lastRefreshDate</td>
-      <td>Identifica de manera única cada registro de balance por usuario, permitiendo almacenar un historial y actualizar el balance.</td>
-    </tr>
-    <tr>
       <td>UserTransactions</td>
       <td>userId</td>
       <td>transactionId</td>
@@ -133,3 +66,75 @@
     </tr>
   </tbody>
 </table>
+
+<h1>Aplicación React Native con Expo para prueba de Wink</h1>
+  <p>Esta es una aplicación de React Native construida con Expo que incorpora las siguientes dependencias:</p>
+  <ul>
+    <li><code>expo</code></li>
+    <li><code>expo-router</code></li>
+    <li><code>react-native-reanimated</code></li>
+    <li><code>eslint</code></li>
+    <li><code>prettier</code></li>
+    <li><code>typescript</code></li>
+    <li><code>@expo/vector-icons</code></li>
+  </ul>
+
+  <h2>Primeros Pasos</h2>
+  <h3>Requisitos Previos</h3>
+  <p>Asegúrate de tener Node.js y npm/yarn instalados en tu entorno de desarrollo.</p>
+
+  <h3>Instalación</h3>
+  <ol>
+    <li>Clona el repositorio:</li>
+    <pre><code>git clone https://github.com/Lucas141418/WinkFrontEnd.git</code></pre>
+    <li>Navega al directorio del proyecto:</li>
+    <pre><code>cd your-repo-name</code></pre>
+    <li>Instala las dependencias:</li>
+    <pre><code>yarn install</code> o <code>npm install</code></pre>
+  </ol>
+
+  <h2>Ejecutar la Aplicación</h2>
+  <pre><code>npx expo start</code> </pre>
+  <pre>más recomendado </pre>
+  <pre><code>npm run start</code></pre>
+  <p>Esto iniciará el servidor de desarrollo y abrirá Expo Go en tu navegador predeterminado para una vista previa fácil en el dispositivo.</p>
+
+  <h2>Estructura de Carpetas</h2>
+  <pre>
+  /winkFrontEnd
+  |-- /app
+  |-- /node_modules
+  |-- /src
+  |    |-- /assets
+  |    |-- /Components
+  |    |    |-- /AccountDetail
+  |    |    |-- /Animation
+  |    |    |-- /Contacts
+  |    |    |-- /Sinpe
+  |    |    |-- /Transaction
+  |    |        |-- Header.tsx
+  |    |        |-- Main.tsx
+  |    |        |-- Screen.tsx
+  |    |-- /context
+  |    |    |-- userInfoContext.tsx
+  |    |-- /Hooks
+  |    |    |-- useFetchCreateTransaction.ts
+  |    |    |-- useFetchTransaction.ts
+  |    |    |-- useFetchTransactionsHistory.ts
+  |    |    |-- useFetchUserInfo.ts
+  |    |-- /Mocks
+  |    |    |-- transactions.json
+  |    |    |-- users.json
+  |    |-- /Services
+  |    |    |-- FetchData.ts
+  |    |-- /styles
+  |    |    |-- AppStyles.ts
+  |    |-- App.tsx
+  |    |-- constants.ts
+  |    |-- types.d.ts
+  |    |-- Utils.ts
+  |-- tsconfig.json
+  |-- .eslintrc.js
+  |-- .prettierrc
+  |-- package.json
+  </pre>

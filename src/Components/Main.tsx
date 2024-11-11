@@ -1,17 +1,25 @@
 import { StatusBar } from "expo-status-bar";
 import ScreenCom from "./Screen";
 import { UserProvider } from "../context/userInfoContext";
-import AccountDetails from "../Components/AccountDetail/AccounDetails";
+import AccountDetails from "./AccountDetail/AccountDetails";
+import { useState } from "react";
+import WinkAnimation from "./Animation/WinkAnimation";
 
 export default function Main() {
-  // const [userInfo, setUserInfo] = useState<userInfoInterface | undefined>(
-  //   undefined,
-  // ); //Quitar es para pruebas locales
+  const [startAnimation, setStartAnimation] = useState<boolean>(true);
+
+  const handleEndAnimation = () => {
+    setStartAnimation(false);
+  };
 
   return (
     <UserProvider>
       <ScreenCom>
-        <AccountDetails />
+        {startAnimation ? (
+          <WinkAnimation onExitFinish={handleEndAnimation} />
+        ) : (
+          <AccountDetails />
+        )}
 
         <StatusBar style="auto" />
       </ScreenCom>

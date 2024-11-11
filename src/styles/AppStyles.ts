@@ -28,6 +28,7 @@ const COLORS = {
   green: "#3be477",
   light_purple: "#D6D6FF",
   purple: "#4A4AFF",
+  light_blue: "#787cf9",
 };
 
 const FONT_SIZE = {
@@ -37,6 +38,7 @@ const FONT_SIZE = {
   text: getFontSize(16),
   subText: getFontSize(18.5),
   timeText: getFontSize(14),
+  amountNumber: getFontSize(13),
   bigCurrency: getFontSize(35),
 };
 
@@ -73,9 +75,11 @@ const AppStyles = StyleSheet.create({
     justifyContent: "center",
     gap: 18,
   },
-  containerSinpe: {
+  SinpeContainer: {
+    flex: 1,
     gap: 12,
-    paddingBottom: 10,
+    paddingHorizontal: 16,
+    paddingTop: 20,
   },
   currentBalance: {
     color: COLORS.gray,
@@ -181,6 +185,30 @@ const AppStyles = StyleSheet.create({
     shadowRadius: 5.84,
     width: scaleHorizontal(65),
   },
+  SinpeInputsContainer: {
+    flexGrow: 1,
+    justifyContent: "space-between",
+  },
+  ContactArrow: {
+    color: COLORS.primaryColor,
+    fontSize: FONT_SIZE.text,
+    fontWeight: "bold",
+  },
+  SinpeUserContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 0,
+    padding: 20,
+    gap: 20,
+    marginBottom: 20,
+  },
+  SinpeUserNumber: {
+    color: COLORS.light_blue,
+    fontSize: FONT_SIZE.amountNumber,
+  },
+  SinpeUserInfo: {
+    flex: 1,
+  },
   transactionAmount: {
     color: COLORS.red,
     fontSize: FONT_SIZE.subText,
@@ -231,25 +259,35 @@ const AppStyles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 1,
     fontSize: FONT_SIZE.text,
+    marginTop: 12,
     marginBottom: 16,
     padding: 10,
   },
   //Cambiar o mejora
   header: {
-    alignItems: "center",
     backgroundColor: COLORS.white,
     flexDirection: "row",
-    gap: 20,
+    alignItems: "center",
+    justifyContent: "space-around",
     padding: 16,
     paddingTop: 40,
   },
+  HeaderArrow: {
+    flex: 1,
+    marginRight: 10,
+  },
   headerText: {
-    alignItems: "center",
-    alignSelf: "center",
+    flex: 0,
+    textAlign: "center",
     color: COLORS.primaryColor,
-    fontSize: FONT_SIZE.h2,
+    fontSize: FONT_SIZE.h3,
     fontWeight: "bold",
   },
+  placeholderHeader: {
+    flex: 1,
+    width: 0,
+  },
+  headerBackButton: {},
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",
@@ -261,6 +299,14 @@ const AppStyles = StyleSheet.create({
   Transactionbutton: {
     alignItems: "center",
     backgroundColor: COLORS.primaryColor,
+    borderRadius: 100,
+    justifyContent: "center",
+    marginTop: 20,
+    padding: 15,
+  },
+  disableButton: {
+    alignItems: "center",
+    backgroundColor: COLORS.gray,
     borderRadius: 100,
     justifyContent: "center",
     marginTop: 20,

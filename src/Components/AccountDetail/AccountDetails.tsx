@@ -1,48 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { View, FlatList } from "react-native";
 import Balance from "./Balance";
-import { UsersIds } from "../../constants";
 import AppStyles from "../../styles/AppStyles";
-import { TransactionInterface } from "../../types";
-import { TransactionsCardsAnimated } from "../TransactionsCard";
-import { transactionsJSON } from "../../Mocks/transactions.json";
 import useFetchTransactionsHistory from "../../Hooks/useFetchTransactionsHistory";
+import { TransactionsCardsAnimated } from "../Transaction/TransactionsCard";
+import { UsersIds } from "../../constants";
 
 export default function AccountDetails() {
-  const { userId1: userId } = UsersIds; // Simulate handling of different users
+  /**
+   * @type {string} userId
+   * @description Simulate handling of different users by changing the userId value
+   */
+  const { userId1: userId }: { userId1: string } = UsersIds;
 
-
-  // const [transactionsHistory, setTransactionHistory] = useState<
-  //   TransactionInterface[]
-  // >([]);
-
-  // useEffect(() => {
-  //   // Simulate fetching transactions and user info on mount
-  //   setTransactionHistory(transactionsJSON);
-  // }, []);
   const { transactionsHistory, getTransactionHistory, lastEvaluatedKey } =
     useFetchTransactionsHistory();
 
   useEffect(() => {
     getTransactionHistory({ userId, lastEvaluatedKey: null });
-  }, [getTransactionHistory]);
+  }, []);
 
   function handleEndReached() {
     if (lastEvaluatedKey) {
       getTransactionHistory({ userId, lastEvaluatedKey });
     }
   }
-
-  // function handleEndReached() {}
-
-  // if (!transactionsHistory) return <Text>No hay datos de usuario</Text>;
+  const sortedTransactions = useMemo(() => {
+    return [...transactionsHistory].sort(
+      (a, b) =>
+        new Date(b.timeTransaction).getTime() -
+        new Date(a.timeTransaction).getTime(),
+    );
+  }, [transactionsHistory]);
 
   return (
     <View>
       <Balance userId={userId} />
 
       <FlatList
-        data={transactionsHistory}
+        data={sortedTransactions}
         keyExtractor={(item) => item.transactionId}
         renderItem={({ item, index }) => (
           <TransactionsCardsAnimated transaction={item} index={index} />

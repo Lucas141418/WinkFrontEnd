@@ -1,9 +1,9 @@
 import { Link } from "expo-router";
 import { Pressable, View, Text, Animated } from "react-native";
-import { formaterCurrency } from "../Utils";
-import { TransactionInterface } from "../types";
 import { useEffect, useRef } from "react";
-import AppStyles from "../styles/AppStyles";
+import AppStyles from "../../styles/AppStyles";
+import { TransactionInterface } from "../../types";
+import { formaterCurrency } from "../../Utils";
 
 // eslint-disable-next-line prettier/prettier
 export function TransactionsCards({  transaction,}: {  transaction: TransactionInterface;}) {
@@ -45,7 +45,7 @@ export function TransactionsCardsAnimated({
     Animated.timing(opacity, {
       toValue: 1,
       duration: 500,
-      delay: index * 100,
+      delay: index * 250,
       useNativeDriver: true,
     }).start();
   }, [opacity, index]);

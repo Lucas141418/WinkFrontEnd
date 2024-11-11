@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TransactionFetchInterface, TransactionInterface } from "../types";
 import { fetchTransactionById } from "../Services/FetchData";
 
@@ -19,9 +19,9 @@ export default function useFetchTransaction() {
 
   // eslint-disable-next-line prettier/prettier
   const getTransaction = async ({
-    userId,  transactionId,
+    userId,
+    transactionId,
   }: TransactionFetchInterface) => {
-    console.log("The transaction was called ");
     setIsLoading(true);
     setError(null);
     try {
