@@ -304,6 +304,14 @@ const AppStyles = StyleSheet.create({
     marginTop: 20,
     padding: 15,
   },
+  disableButton: {
+    alignItems: "center",
+    backgroundColor: COLORS.gray,
+    borderRadius: 100,
+    justifyContent: "center",
+    marginTop: 20,
+    padding: 15,
+  },
   buttonText: {
     color: COLORS.white,
     fontSize: FONT_SIZE.text,

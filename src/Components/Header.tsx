@@ -1,5 +1,5 @@
 import { AntDesign } from "@expo/vector-icons";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { View, Pressable, Text } from "react-native";
 import AppStyles from "../styles/AppStyles";
 

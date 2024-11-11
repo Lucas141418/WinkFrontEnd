@@ -1,13 +1,10 @@
 import { View, Text, Pressable } from "react-native";
 import { Link } from "expo-router";
-import AppStyles from "../styles/AppStyles";
-import { formaterCurrency } from "../Utils";
-import useFetchTransaction from "../Hooks/useFetchTransaction";
-import { useContext, useEffect, useState } from "react";
-import { TransactionInterface } from "../types";
-import { transactionsJSON } from "../Mocks/transactions.json";
-import { ExtractFirstLetters } from "../constants";
-import { UserInfoContext } from "../context/userInfoContext";
+import { useEffect } from "react";
+import useFetchTransaction from "../../Hooks/useFetchTransaction";
+import { ExtractFirstLetters } from "../../constants";
+import AppStyles from "../../styles/AppStyles";
+import { formaterCurrency } from "../../Utils";
 
 interface TransactionDetailProps {
   transactionId: string;
@@ -19,26 +16,26 @@ export default function TransactionDetail({
   transactionId,
   userId,
 }: TransactionDetailProps) {
-  const [transactionDetailed, setTransactionDetailed] =
-    useState<TransactionInterface>({
-      detailsTransaction: "",
-      timeTransaction: "",
-      recipientPhone: "",
-      userId: "",
-      recipientName: "",
-      amount: 0,
-      recipientId: "",
-      transactionId: "",
-    });
-  // const { transactionDetailed, getTransaction } = useFetchTransaction();
-
-  // useEffect(() => {
-  //   getTransaction({ userId, transactionId });
-  // }, [transactionId, userId]);
+  // const [transactionDetailed, setTransactionDetailed] =
+  //   useState<TransactionInterface>({
+  //     detailsTransaction: "",
+  //     timeTransaction: "",
+  //     recipientPhone: "",
+  //     userId: "",
+  //     recipientName: "",
+  //     amount: 0,
+  //     recipientId: "",
+  //     transactionId: "",
+  //   });
+  const { transactionDetailed, getTransaction } = useFetchTransaction();
 
   useEffect(() => {
-    setTransactionDetailed(transactionsJSON[0]);
-  }, [transactionId]);
+    getTransaction({ userId, transactionId });
+  }, [transactionId, userId]);
+
+  // useEffect(() => {
+  //   setTransactionDetailed(transactionsJSON[0]);
+  // }, [transactionId]);
 
   return (
     <View style={AppStyles.TransactionContainer}>

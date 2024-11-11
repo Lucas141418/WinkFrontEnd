@@ -3,7 +3,7 @@ import { TransactionInterface, transactionsLazyInterface } from "../types";
 import { fetchUserTransactions } from "../Services/FetchData";
 
 export default function useFetchTransactionsHistory() {
-  const [transactionsHistory, settransactionsHistory] = useState<
+  const [transactionsHistory, setTransactionsHistory] = useState<
     TransactionInterface[]
   >([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -15,10 +15,7 @@ export default function useFetchTransactionsHistory() {
       setLoading(true);
       fetchUserTransactions({ userId, lastEvaluatedKey })
         .then((data) => {
-          settransactionsHistory((prevState) => [
-            ...prevState,
-            ...data.transactions,
-          ]);
+          setTransactionsHistory(data.transactions);
           setLastEvaluatedKey(data.lastEvaluatedKey || null);
         })
         .catch((err) => {

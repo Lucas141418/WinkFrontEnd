@@ -8,8 +8,6 @@ import Animated, {
 } from "react-native-reanimated";
 import { View, TextProps } from "react-native";
 import AnimationStyle from "./AnimationStyle";
-import { Stack } from "expo-router";
-import { Header } from "react-native/Libraries/NewAppScreen";
 
 type WinkAnimationProps = TextProps & {
   stagger?: number;
@@ -18,7 +16,7 @@ type WinkAnimationProps = TextProps & {
 };
 
 export default function WinkAnimation({
-  stagger = 300,
+  stagger = 250,
   onEnterFinish,
   onExitFinish,
   ...rest
@@ -26,7 +24,7 @@ export default function WinkAnimation({
   const [outer, setOuter] = useState<boolean>(true);
   const [inner, setInner] = useState<boolean>(true);
   const letters = "WINK".split("");
-  const duration = 2000;
+  const duration = 3500;
 
   useEffect(() => {
     if (outer) {

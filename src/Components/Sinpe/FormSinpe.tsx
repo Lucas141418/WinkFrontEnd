@@ -1,10 +1,12 @@
+/* eslint-disable prettier/prettier */
 import { Controller, useForm } from "react-hook-form";
 import { Pressable, TextInput, View, Text } from "react-native";
-import useFetchCreateTransaction from "../Hooks/useFetchCreateTransaction";
-import { TransactionCreationInterface } from "../types";
-import AppStyles from "../styles/AppStyles";
+import useFetchCreateTransaction from "../../Hooks/useFetchCreateTransaction";
+import { TransactionCreationInterface } from "../../types";
+import AppStyles from "../../styles/AppStyles";
 import { useRouter } from "expo-router";
-import useFetchUserInfo from "../Hooks/useFetchUserInfo";
+import useFetchUserInfo from "../../Hooks/useFetchUserInfo";
+import { useState } from "react";
 
 type FormData = {
   amount: string;
@@ -24,8 +26,10 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const { fetchCreationTransaction, transaction } = useFetchCreateTransaction();
+  const { fetchCreationTransaction, transaction, loading } =
+    useFetchCreateTransaction();
   const { getUserInfo, setUserInfo, userInfo } = useFetchUserInfo();
+  const [errorSinpe, setErrorSinpe] = useState<string | null>(null);
   const router = useRouter();
 
   const onSubmit = async (data: FormData) => {
@@ -39,16 +43,20 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
       recipientId: id,
     };
 
-    try {
-      const { data } = await fetchCreationTransaction({ newtransaction });
-      const updatedUser = await getUserInfo({ userId: userInfo.userId });
-      setUserInfo(updatedUser);
-      console.log(transaction);
-      if (data) {
-        router.replace("/");
+    if (!loading) {
+      try {
+        const res = await fetchCreationTransaction({ newtransaction });
+        const updatedUser = await getUserInfo({ userId: userInfo.userId });
+        setUserInfo(updatedUser);
+        console.log(transaction);
+        if (res.data) {
+          router.push("/");
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.error("Error al crear la transacción:", err);
+    } else {
+      setErrorSinpe("La transaccion ya esta en proceso, por favor espere");
     }
   };
   return (
@@ -60,10 +68,16 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
           control={control}
           rules={{
             validate: {
-              positive: (value) =>
-                // eslint-disable-next-line prettier/prettier
-                parseFloat(value) > 0 ||
-                "El monto de la tranferencia debe ser mayor que 0",
+              positive: (value) => {
+                if (parseFloat(value) <= 0) {
+                  return "El monto de la transferencia debe ser mayor que 0";
+                }
+                if (parseFloat(value) > userInfo.balance) {
+                  console.log("userBalance " + userInfo.balance);
+                  return "El monto de la transferencia no puede ser mayor que tu balance";
+                }
+                return true;
+              },
             },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
@@ -77,7 +91,7 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
             />
           )}
         />
-        {errors.amount && (
+        {errors.amount?.message && (
           <Text style={AppStyles.errorText}>{errors.amount.message}</Text>
         )}
 
@@ -108,9 +122,17 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
       </View>
       <Pressable
         onPress={handleSubmit(onSubmit)}
-        style={AppStyles.Transactionbutton}
+        style={[
+          AppStyles.Transactionbutton,
+          loading || errors.amount?.message || errors?.detail || errorSinpe
+            ? AppStyles.disableButton
+            : AppStyles.Transactionbutton,
+        ]}
+        disabled={loading}
       >
-        <Text style={AppStyles.buttonText}>Confirmar</Text>
+        <Text style={AppStyles.buttonText}>
+          {loading ? "Processando.." : "Confirmar"}
+        </Text>
       </Pressable>
     </View>
   );

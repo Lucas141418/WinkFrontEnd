@@ -1,8 +1,8 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import ScreenCom from "../src/Components/Screen";
-import TransactionDetail from "../src/Components/TransactionDetail";
 import { UsersIds } from "../src/constants";
 import Header from "../src/Components/Header";
+import TransactionDetail from "../src/Components/Transaction/TransactionDetail";
 
 export default function TransactionDetails() {
   const { transactionId } = useLocalSearchParams();

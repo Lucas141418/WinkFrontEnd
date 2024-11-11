@@ -8,26 +8,26 @@ import useFetchUserInfo from "../../Hooks/useFetchUserInfo";
 
 export default function Balance({ userId }: userIdType) {
   const [refreshing, setRefreshing] = useState<boolean>(false);
-  // const { getUserInfo, setUserInfo, userInfo } = useFetchUserInfo();
+  const { getUserInfo, setUserInfo, userInfo } = useFetchUserInfo();
 
-  const [userInfo, setUserInfo] = useState<userInfoInterface>({
-    balance: 10000,
-    userId: "dasd",
-    userPhone: "123123",
-    userName: "eduardo",
-  });
+  // const [userInfo, setUserInfo] = useState<userInfoInterface>({
+  //   balance: 10000,
+  //   userId: "dasd",
+  //   userPhone: "123123",
+  //   userName: "eduardo",
+  // });
 
-  // const onRefresh = async () => {
-  //   setRefreshing(true);
-  //   const updatedUser = await getUserInfo({ userId });
-  //   setUserInfo(updatedUser as userInfoInterface);
-  //   setRefreshing(false);
-  // };
-  const onRefresh = async () => {};
+  const onRefresh = async () => {
+    setRefreshing(true);
+    const updatedUser = await getUserInfo({ userId });
+    setUserInfo(updatedUser as userInfoInterface);
+    setRefreshing(false);
+  };
+  // const onRefresh = async () => {};
 
   // useEffect(() => {
-  //   // Simulate fetching transactions and user info on mount
-  //   // getUserInfo({ userId }).then(setUserInfo);
+  //   //   // Simulate fetching transactions and user info on mount
+  //   getUserInfo({ userId }).then(setUserInfo);
   // }, []);
 
   // if (!userInfo) return <Text>No hay datos de usuario</Text>;

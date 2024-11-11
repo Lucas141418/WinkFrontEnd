@@ -14,7 +14,7 @@ export default function useFetchCreateTransaction() {
     transactionId: "",
   });
 
-  const [error, setError] = useState<string | null | unknown>(null);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   // eslint-disable-next-line prettier/prettier
@@ -30,7 +30,7 @@ export default function useFetchCreateTransaction() {
       const res = await createTransaction({ newtransaction });
       setTransaction(res);
       return res;
-    } catch (err: unknown) {
+    } catch (err) {
       setError(err);
     } finally {
       setLoading(false);
@@ -41,6 +41,7 @@ export default function useFetchCreateTransaction() {
     transaction,
     error,
     loading,
+    setError,
     fetchCreationTransaction,
   };
 }

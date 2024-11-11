@@ -4,15 +4,15 @@ import { fetchUserInfoById } from "../Services/FetchData";
 import { UserInfoContext } from "../context/userInfoContext";
 
 export default function useFetchUserInfo() {
-  const { setUserInfo, userInfo } = useContext(UserInfoContext);
+  const { setUserInfo, userInfo, setLoading, loading } =
+    useContext(UserInfoContext);
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const getUserInfo = useCallback(
     async ({ userId }: userIdType) => {
       console.log("calling the user");
-      setIsLoading(true);
+      setLoading(true);
       setError(null);
       try {
         const data = await fetchUserInfoById({ userId });
@@ -22,11 +22,11 @@ export default function useFetchUserInfo() {
       } catch (err) {
         setError(err + "Error fetching user info");
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     },
     [setUserInfo],
   );
 
-  return { userInfo, isLoading, error, getUserInfo, setUserInfo };
+  return { userInfo, setLoading, error, getUserInfo, setUserInfo, loading };
 }

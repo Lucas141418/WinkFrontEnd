@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { FlatList, SectionList, Text, TextInput, View } from "react-native";
+import { FlatList, TextInput, View } from "react-native";
 import AppStyles from "../../styles/AppStyles";
 import { Controller, useForm } from "react-hook-form";
 import { useMemo, useState } from "react";

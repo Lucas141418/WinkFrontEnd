@@ -12,7 +12,8 @@
   "dependencies": {
     "@expo/metro-runtime": "~3.2.3",
     "@expo/vector-icons": "^14.0.4",
-    "expo": "~51.0.39",
+    "eslit": "6.0.0",
+    "expo": "51.0.39",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.24",
     "expo-status-bar": "~1.12.1",

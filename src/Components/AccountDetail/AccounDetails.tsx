@@ -1,38 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { View, FlatList } from "react-native";
 import Balance from "./Balance";
-import { UsersIds } from "../../constants";
 import AppStyles from "../../styles/AppStyles";
-import { TransactionInterface } from "../../types";
-import { TransactionsCardsAnimated } from "../TransactionsCard";
-import { transactionsJSON } from "../../Mocks/transactions.json";
 import useFetchTransactionsHistory from "../../Hooks/useFetchTransactionsHistory";
+import { TransactionsCardsAnimated } from "../Transaction/TransactionsCard";
+import { userInfoInterface } from "../../types";
 
-export default function AccountDetails() {
-  const { userId1: userId } = UsersIds; // Simulate handling of different users
+type userInfoProps = {
+  userInfo: userInfoInterface;
+};
 
-  const [transactionsHistory, setTransactionHistory] = useState<
-    TransactionInterface[]
-  >([]);
+export default function AccountDetails({ userInfo }: userInfoProps) {
+  const { transactionsHistory, getTransactionHistory, lastEvaluatedKey } =
+    useFetchTransactionsHistory();
+  const { userId } = userInfo;
 
   useEffect(() => {
-    // Simulate fetching transactions and user info on mount
-    setTransactionHistory(transactionsJSON);
+    getTransactionHistory({ userId, lastEvaluatedKey: null });
+    console.log("lastEvaluatedKey1", transactionsHistory);
   }, []);
-  // const { transactionsHistory, getTransactionHistory, lastEvaluatedKey } =
-  //   useFetchTransactionsHistory();
 
-  // useEffect(() => {
-  //   getTransactionHistory({ userId, lastEvaluatedKey: null });
-  // }, [getTransactionHistory]);
+  function handleEndReached() {
+    if (lastEvaluatedKey) {
+      getTransactionHistory({ userId, lastEvaluatedKey });
+    }
+  }
 
-  // function handleEndReached() {
-  //   if (lastEvaluatedKey) {
-  //     getTransactionHistory({ userId, lastEvaluatedKey });
-  //   }
-  // }
-
-  function handleEndReached() {}
+  // function handleEndReached() {}
 
   // if (!transactionsHistory) return <Text>No hay datos de usuario</Text>;
 
