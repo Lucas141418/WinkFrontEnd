@@ -9,13 +9,35 @@ export default function useFetchTransactionsHistory() {
   const [loading, setLoading] = useState<boolean>(false);
   const [lastEvaluatedKey, setLastEvaluatedKey] = useState<string>("");
 
+  // eslint-disable-next-line prettier/prettier
+  const preventDuplicates = (
+    transactions: TransactionInterface[],
+  ): TransactionInterface[] => {
+    const uniqueTransactions = transactions
+      .filter((transaction, index, self) => {
+        return (
+          index ===
+          self.findIndex((t) => t.transactionId === transaction.transactionId)
+        );
+      })
+      .sort(
+        (a, b) =>
+          new Date(b.timeTransaction).getTime() -
+          new Date(a.timeTransaction).getTime(),
+      );
+    return uniqueTransactions;
+  };
+
   const getTransactionHistory = useCallback(
     ({ userId, lastEvaluatedKey }: transactionsLazyInterface) => {
-      console.log("calling the history");
+      console.log("calling the history" + transactionsHistory);
       setLoading(true);
       fetchUserTransactions({ userId, lastEvaluatedKey })
         .then((data) => {
-          setTransactionsHistory(data.transactions);
+          setTransactionsHistory((prevState) => {
+            // eslint-disable-next-line prettier/prettier
+            return preventDuplicates([...prevState, ...data.transactions]);
+          });
           setLastEvaluatedKey(data.lastEvaluatedKey || null);
         })
         .catch((err) => {

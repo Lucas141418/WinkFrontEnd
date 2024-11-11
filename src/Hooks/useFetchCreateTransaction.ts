@@ -27,9 +27,9 @@ export default function useFetchCreateTransaction() {
     setLoading(true);
     setError(null);
     try {
-      const res = await createTransaction({ newtransaction });
-      setTransaction(res);
-      return res;
+      const data = await createTransaction({ newtransaction });
+      setTransaction(data);
+      return data;
     } catch (err) {
       setError(err);
     } finally {

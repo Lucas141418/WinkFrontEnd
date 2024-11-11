@@ -1,5 +1,5 @@
 import { useCallback, useContext, useState } from "react";
-import { userIdType, userInfoInterface } from "../types";
+import { userIdType } from "../types";
 import { fetchUserInfoById } from "../Services/FetchData";
 import { UserInfoContext } from "../context/userInfoContext";
 

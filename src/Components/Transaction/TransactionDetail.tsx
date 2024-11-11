@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from "react-native";
 import { Link } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import useFetchTransaction from "../../Hooks/useFetchTransaction";
 import { ExtractFirstLetters } from "../../constants";
 import AppStyles from "../../styles/AppStyles";
@@ -31,11 +31,10 @@ export default function TransactionDetail({
 
   useEffect(() => {
     getTransaction({ userId, transactionId });
+    console.log(
+      "The transaction was called " + transactionDetailed.detailsTransaction,
+    );
   }, [transactionId, userId]);
-
-  // useEffect(() => {
-  //   setTransactionDetailed(transactionsJSON[0]);
-  // }, [transactionId]);
 
   return (
     <View style={AppStyles.TransactionContainer}>
@@ -56,7 +55,7 @@ export default function TransactionDetail({
         <View>
           <Text style={AppStyles.TransactionSubText}>Fecha: </Text>
           <Text style={AppStyles.TransactionSectionText}>
-            Date Test{transactionDetailed.timeTransaction}
+            {transactionDetailed.timeTransaction}
           </Text>
         </View>
         <View>

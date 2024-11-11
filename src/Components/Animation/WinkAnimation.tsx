@@ -24,7 +24,7 @@ export default function WinkAnimation({
   const [outer, setOuter] = useState<boolean>(true);
   const [inner, setInner] = useState<boolean>(true);
   const letters = "WINK".split("");
-  const duration = 3500;
+  const duration = 3000;
 
   useEffect(() => {
     if (outer) {

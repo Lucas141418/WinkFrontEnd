@@ -6,7 +6,8 @@ import { TransactionCreationInterface } from "../../types";
 import AppStyles from "../../styles/AppStyles";
 import { useRouter } from "expo-router";
 import useFetchUserInfo from "../../Hooks/useFetchUserInfo";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserInfoContext } from "../../context/userInfoContext";
 
 type FormData = {
   amount: string;
@@ -26,8 +27,7 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const { fetchCreationTransaction, transaction, loading } =
-    useFetchCreateTransaction();
+  const { fetchCreationTransaction, loading } = useFetchCreateTransaction();
   const { getUserInfo, setUserInfo, userInfo } = useFetchUserInfo();
   const [errorSinpe, setErrorSinpe] = useState<string | null>(null);
   const router = useRouter();
@@ -45,14 +45,14 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
 
     if (!loading) {
       try {
-        const res = await fetchCreationTransaction({ newtransaction });
+        const { data } = await fetchCreationTransaction({ newtransaction });
         const updatedUser = await getUserInfo({ userId: userInfo.userId });
         setUserInfo(updatedUser);
-        console.log(transaction);
-        if (res.data) {
+        if (data) {
           router.push("/");
         }
       } catch (err) {
+        setErrorSinpe("Error al crear la transaccion");
         console.log(err);
       }
     } else {
@@ -70,11 +70,7 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
             validate: {
               positive: (value) => {
                 if (parseFloat(value) <= 0) {
-                  return "El monto de la transferencia debe ser mayor que 0";
-                }
-                if (parseFloat(value) > userInfo.balance) {
-                  console.log("userBalance " + userInfo.balance);
-                  return "El monto de la transferencia no puede ser mayor que tu balance";
+                  return "El monto de la transferencia debe ser mayor que 0"; // Devolver el mensaje de error
                 }
                 return true;
               },
@@ -91,8 +87,8 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
             />
           )}
         />
-        {errors.amount?.message && (
-          <Text style={AppStyles.errorText}>{errors.amount.message}</Text>
+        {errors.detail && (
+          <Text style={AppStyles.errorText}>{errors.detail.message}</Text>
         )}
 
         <Text style={AppStyles.h3}>Detalle</Text>
@@ -120,15 +116,10 @@ export default function FormSinpe({ phoneNumber, name, id }: FormSinpeProps) {
           <Text style={AppStyles.errorText}>{errors.detail.message}</Text>
         )}
       </View>
+      {errorSinpe && <Text style={AppStyles.errorText}>{errorSinpe}</Text>}
       <Pressable
         onPress={handleSubmit(onSubmit)}
-        style={[
-          AppStyles.Transactionbutton,
-          loading || errors.amount?.message || errors?.detail || errorSinpe
-            ? AppStyles.disableButton
-            : AppStyles.Transactionbutton,
-        ]}
-        disabled={loading}
+        style={AppStyles.Transactionbutton}
       >
         <Text style={AppStyles.buttonText}>
           {loading ? "Processando.." : "Confirmar"}

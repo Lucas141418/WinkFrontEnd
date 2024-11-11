@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { FlatList, TextInput, View } from "react-native";
+import { FlatList, TextInput, View, Text } from "react-native";
 import AppStyles from "../../styles/AppStyles";
 import { Controller, useForm } from "react-hook-form";
 import { useMemo, useState } from "react";
@@ -46,6 +46,9 @@ export const ContactList = () => {
         keyExtractor={(Contact) => Contact.id}
         ItemSeparatorComponent={() => <View style={AppStyles.ContactsRow} />}
       />
+      {filteredContacts.length === 0 && (
+        <Text style={AppStyles.errorText}>No se encontro ningun contacto</Text>
+      )}
     </View>
   );
 };

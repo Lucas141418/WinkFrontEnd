@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { View, FlatList } from "react-native";
 import Balance from "./Balance";
 import AppStyles from "../../styles/AppStyles";
 import useFetchTransactionsHistory from "../../Hooks/useFetchTransactionsHistory";
 import { TransactionsCardsAnimated } from "../Transaction/TransactionsCard";
-import { userInfoInterface } from "../../types";
+import { UsersIds } from "../../constants";
 
-type userInfoProps = {
-  userInfo: userInfoInterface;
-};
+export default function AccountDetails() {
+  /**
+   * @type {string} userId
+   * @description Simulate handling of different users by changing the userId value
+   */
+  const { userId1: userId }: { userId1: string } = UsersIds;
 
-export default function AccountDetails({ userInfo }: userInfoProps) {
   const { transactionsHistory, getTransactionHistory, lastEvaluatedKey } =
     useFetchTransactionsHistory();
-  const { userId } = userInfo;
 
   useEffect(() => {
     getTransactionHistory({ userId, lastEvaluatedKey: null });
-    console.log("lastEvaluatedKey1", transactionsHistory);
   }, []);
 
   function handleEndReached() {
@@ -25,17 +25,20 @@ export default function AccountDetails({ userInfo }: userInfoProps) {
       getTransactionHistory({ userId, lastEvaluatedKey });
     }
   }
-
-  // function handleEndReached() {}
-
-  // if (!transactionsHistory) return <Text>No hay datos de usuario</Text>;
+  const sortedTransactions = useMemo(() => {
+    return [...transactionsHistory].sort(
+      (a, b) =>
+        new Date(b.timeTransaction).getTime() -
+        new Date(a.timeTransaction).getTime(),
+    );
+  }, [transactionsHistory]);
 
   return (
     <View>
       <Balance userId={userId} />
 
       <FlatList
-        data={transactionsHistory}
+        data={sortedTransactions}
         keyExtractor={(item) => item.transactionId}
         renderItem={({ item, index }) => (
           <TransactionsCardsAnimated transaction={item} index={index} />
