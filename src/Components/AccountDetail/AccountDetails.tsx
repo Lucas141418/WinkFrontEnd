@@ -4,7 +4,7 @@ import Balance from "./Balance";
 import AppStyles from "../../styles/AppStyles";
 import useFetchTransactionsHistory from "../../Hooks/useFetchTransactionsHistory";
 import { TransactionsCardsAnimated } from "../Transaction/TransactionsCard";
-import { UsersIds } from "../../constants";
+import { parseCustomDate, UsersIds } from "../../constants";
 
 export default function AccountDetails() {
   /**
@@ -25,20 +25,13 @@ export default function AccountDetails() {
       getTransactionHistory({ userId, lastEvaluatedKey });
     }
   }
-  const sortedTransactions = useMemo(() => {
-    return [...transactionsHistory].sort(
-      (a, b) =>
-        new Date(b.timeTransaction).getTime() -
-        new Date(a.timeTransaction).getTime(),
-    );
-  }, [transactionsHistory]);
 
   return (
     <View>
       <Balance userId={userId} />
 
       <FlatList
-        data={sortedTransactions}
+        data={transactionsHistory}
         keyExtractor={(item) => item.transactionId}
         renderItem={({ item, index }) => (
           <TransactionsCardsAnimated transaction={item} index={index} />

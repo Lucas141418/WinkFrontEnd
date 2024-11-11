@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from "react-native";
 import { Link } from "expo-router";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import useFetchTransaction from "../../Hooks/useFetchTransaction";
 import { ExtractFirstLetters } from "../../constants";
 import AppStyles from "../../styles/AppStyles";
@@ -31,9 +31,6 @@ export default function TransactionDetail({
 
   useEffect(() => {
     getTransaction({ userId, transactionId });
-    console.log(
-      "The transaction was called " + transactionDetailed.detailsTransaction,
-    );
   }, [transactionId, userId]);
 
   return (
